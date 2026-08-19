@@ -561,6 +561,8 @@ async function initGitHubRepos() {
 
   const ignoredPatterns = [
     /faresslimani/i,
+    /mfares/i,
+    /fares/i,
     /gitlearning/i,
     /portfolio/i,
     /\.github\.io/i
