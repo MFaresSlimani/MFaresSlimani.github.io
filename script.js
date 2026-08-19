@@ -720,15 +720,15 @@ function initEasterEggs() {
 
   const meowPhrases = [
     'Meow! 🐾',
-    'Purrr... ✨',
+    'Purrr...',
     'You found Tsuki! 🌙',
-    'Need a Senior Mobile Engineer? 🚀',
-    'Building cool things with Flutter & AI 💻',
-    '100% bug-free (I ate all the bugs) 🐱',
-    'ECL B2 German Certified! Sehr gut! 🇩🇪',
-    '58 Wilayas of Algeria explored! 🗺️',
-    'Keep petting me! ❤️',
-    'Flutter is awesome! 💙'
+    'Need a Senior Mobile Engineer?',
+    'Building cool things with Flutter & AI',
+    '100% bug-free (I ate all the bugs)',
+    'Sehr gut!',
+    '58 Wilayas of Algeria explored!',
+    'Keep petting me!',
+    'Flutter is awesome!'
   ];
 
   let petCount = 0;
