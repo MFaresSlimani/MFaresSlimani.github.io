@@ -2335,32 +2335,33 @@ body {
 
 .kitten-bubble {
   position: absolute;
-  top: -38px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.8);
-  background: rgba(15, 23, 42, 0.92);
+  top: -42px;
+  left: 0;
+  transform: translateY(6px) scale(0.9);
+  transform-origin: bottom left;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
   color: #38bdf8;
   border: 1px solid rgba(56, 189, 248, 0.4);
-  padding: 0.3rem 0.65rem;
+  padding: 0.35rem 0.75rem;
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   font-weight: 600;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 10px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 0 10px rgba(56, 189, 248, 0.25);
 }
 
 .kitten-bubble::after {
   content: '';
   position: absolute;
   bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 24px;
   width: 6px;
   height: 6px;
-  background: rgba(15, 23, 42, 0.92);
+  background: rgba(15, 23, 42, 0.95);
   border-right: 1px solid rgba(56, 189, 248, 0.4);
   border-bottom: 1px solid rgba(56, 189, 248, 0.4);
   transform: rotate(45deg);
@@ -2369,7 +2370,7 @@ body {
 .kitten-container:hover .kitten-bubble,
 .kitten-bubble.show {
   opacity: 1;
-  transform: translateX(-50%) scale(1);
+  transform: translateY(0) scale(1);
 }
 
 .kitten-body {
