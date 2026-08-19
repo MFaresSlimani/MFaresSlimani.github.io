@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Fares Slimani | Senior Mobile Engineer & AI PhD Researcher</title>
+  <meta name="description"
+    content="Portfolio of Mohamed Fares Slimani (Tsuki) - Senior Mobile Engineer at ICOSNET SPA, Adjunct University Instructor, and PhD AI Researcher in Deep Learning.">
+  <meta name="keywords"
+    content="Mohamed Fares Slimani, Fares Slimani, Senior Mobile Engineer, Flutter, Dart, Clean Architecture, AI Researcher, Deep Learning, PyTorch, NVIDIA Certified, ECL B2, ICOSNET, Algeria">
+  <meta name="author" content="Mohamed Fares Slimani">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohamed Fares Slimani | Senior Mobile Engineer & AI PhD Researcher">
+  <meta property="og:description"
+    content="Production Flutter apps (Fintech, Telecom, KYC), Django backends, University Teaching & PhD Deep Learning Research.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/62572098?v=4">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Neural Network Constellation Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="header" id="header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" id="nav-brand">
+        <span class="logo-bracket">&lt;</span><span class="logo-name">M.Fares</span><span
+          class="logo-accent">.AI</span><span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link" id="nav-link-about">About</a></li>
+          <li class="nav-item"><a href="#dual-focus" class="nav-link" id="nav-link-focus">Focus</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link" id="nav-link-skills">Skills</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link" id="nav-link-projects">Projects</a></li>
+          <li class="nav-item"><a href="#research" class="nav-link" id="nav-link-research">Research</a></li>
+          <li class="nav-item"><a href="#experience" class="nav-link" id="nav-link-experience">Experience</a></li>
+          <li class="nav-item"><a href="#education" class="nav-link" id="nav-link-education">Education</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link" id="nav-link-contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="CV%20Fares%20Slimani.pdf" download="CV_Mohamed_El_Fares_Slimani.pdf" class="btn btn-sm btn-secondary"
+          id="nav-cv-btn" title="Download Official CV">
+          <i data-lucide="file-down" class="btn-icon"></i>
+          <span>Resume PDF</span>
+        </a>
+        <a href="#contact" class="btn btn-sm btn-primary btn-glow" id="nav-cta-btn">
+          <i data-lucide="send" class="btn-icon"></i>
+          <span>Let's Talk</span>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <i data-lucide="menu" id="toggle-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-header">
+      <span class="brand-logo"><span class="logo-bracket">&lt;</span>M.Fares<span class="logo-accent">.AI</span><span
+          class="logo-bracket">/&gt;</span></span>
+      <button class="close-drawer" id="close-drawer" aria-label="Close Menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#about" class="drawer-link">About Me</a></li>
+      <li><a href="#dual-focus" class="drawer-link">Dual Focus</a></li>
+      <li><a href="#skills" class="drawer-link">Technical Stack</a></li>
+      <li><a href="#projects" class="drawer-link">Projects</a></li>
+      <li><a href="#research" class="drawer-link">Research & Certs</a></li>
+      <li><a href="#experience" class="drawer-link">Experience</a></li>
+      <li><a href="#education" class="drawer-link">Education</a></li>
+      <li><a href="#contact" class="drawer-link">Contact</a></li>
+    </ul>
+    <div class="drawer-actions">
+      <a href="CV%20Fares%20Slimani.pdf" download="CV_Mohamed_El_Fares_Slimani.pdf" class="btn btn-block btn-secondary">
+        <i data-lucide="file-down"></i> Download Resume
+      </a>
+    </div>
+    <div class="drawer-socials">
+      <a href="https://github.com/MFaresSlimani" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/faresslimani01/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="mailto:faresslimani0@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
+      <a href="tel:+213558139901" aria-label="Phone"><i data-lucide="phone"></i></a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+
+          <h1 class="hero-title">
+            <span class="gradient-text">Mohamed Fares</span> Slimani
+            <span class="hero-handle">(Tsuki)</span>
+          </h1>
+
+          <div class="typewriter-container">
+            <span class="typewriter-prefix">I am a </span>
+            <span class="typewriter-text" id="typewriter-text">Senior Mobile Engineer</span>
+            <span class="typewriter-cursor">|</span>
+          </div>
+
+          <p class="hero-description">
+            <strong>Senior Mobile Engineer at ICOSNET SPA</strong> delivering production apps used by thousands of
+            clients (Fintech, Telecom, NFC/MRZ KYC) &bull; <strong>University Adjunct Instructor</strong> in OS & Data
+            Mining &bull; <strong>PhD Researcher in AI</strong> (Retinal Medical Vision & 3D Sign Language).
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="CV%20Fares%20Slimani.pdf" download="CV_Mohamed_El_Fares_Slimani.pdf"
+              class="btn btn-primary btn-glow" id="hero-btn-cv">
+              <i data-lucide="file-down" class="btn-icon"></i>
+              <span>Download CV (PDF)</span>
+            </a>
+            <a href="#projects" class="btn btn-secondary" id="hero-btn-projects">
+              <i data-lucide="folder-git-2" class="btn-icon"></i>
+              <span>Explore Projects</span>
+            </a>
+            <a href="#contact" class="btn btn-ghost" id="hero-btn-contact">
+              <i data-lucide="mail" class="btn-icon"></i>
+              <span>faresslimani0@gmail.com</span>
+            </a>
+          </div>
+
+          <div class="hero-social-links">
+            <a href="https://github.com/MFaresSlimani" target="_blank" rel="noopener" class="social-icon-btn"
+              title="GitHub Profile (@MFaresSlimani)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/faresslimani01/" target="_blank" rel="noopener" class="social-icon-btn"
+              title="LinkedIn Profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="tel:+213558139901" class="social-icon-btn" title="Direct Phone (+213 558 139 901)">
+              <i data-lucide="phone"></i>
+            </a>
+            <a href="https://doi.org/10.54455/mcn2804" target="_blank" rel="noopener" class="social-icon-btn"
+              title="Research DOI (Nafath Majlis)">
+              <i data-lucide="book-open-check"></i>
+            </a>
+            <button class="social-icon-btn copy-email-btn" id="hero-copy-email-btn" title="Copy Email">
+              <i data-lucide="copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="avatar-glow-ring">
+            <div class="avatar-card glass-panel">
+              <img src="https://avatars.githubusercontent.com/u/62572098?v=4" alt="Mohamed Fares Slimani"
+                class="hero-avatar-img">
+              <div class="avatar-badge">
+                <i data-lucide="sparkles" class="badge-icon"></i>
+                <span>Senior Engineer & PhD AI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="floating-card floating-card-1 glass-panel">
+            <div class="floating-icon-box bg-purple">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <div class="floating-text">
+              <span class="floating-val">NVIDIA & ECL</span>
+              <span class="floating-lbl">Certified DL & B2 German</span>
+            </div>
+          </div>
+
+          <div class="floating-card floating-card-2 glass-panel">
+            <div class="floating-icon-box bg-cyan">
+              <i data-lucide="smartphone"></i>
+            </div>
+            <div class="floating-text">
+              <span class="floating-val">15+ Production Apps</span>
+              <span class="floating-lbl">Telecom, Fintech & KYC</span>
+            </div>
+          </div>
+
+          <div class="floating-card floating-card-3 glass-panel">
+            <div class="floating-icon-box bg-emerald">
+              <i data-lucide="award"></i>
+            </div>
+            <div class="floating-text">
+              <span class="floating-val">2x DOI Publications</span>
+              <span class="floating-lbl">Nafath Majlis & Zenodo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="container hero-metrics-wrap">
+        <div class="metrics-bar glass-panel">
+          <div class="metric-item">
+            <div class="metric-number"><span class="counter" data-target="5">5</span>+</div>
+            <div class="metric-label">Years Engineering Experience</div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <div class="metric-number">Enterprise</div>
+            <div class="metric-label">Telecom, Fintech & KYC Systems</div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <div class="metric-number">2x</div>
+            <div class="metric-label">Published DOI Works</div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <div class="metric-number"><span class="counter" data-target="4">4</span></div>
+            <div class="metric-label">Languages (AR, EN, DE, FR)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="user"></i>
+            <span>Profile & Background</span>
+          </div>
+          <h2 class="section-title">About <span class="gradient-text">Mohamed Fares</span></h2>
+          <p class="section-subtitle">
+            Senior software engineer with full end-to-end ownership, university teaching experience, and doctoral deep
+            learning research.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass-panel">
+            <h3 class="about-card-title"><i data-lucide="smartphone" class="color-cyan"></i> Senior Mobile Engineer</h3>
+            <p class="about-card-text">
+              At <strong>ICOSNET SPA</strong>, I lead mobile engineering across telecom, fintech payments, and identity
+              verification. I build secure flows with NFC passport reading, MRZ scanning, liveness detection, and
+              complete KYC onboarding. I also built and maintain scalable <strong>Django/DRF</strong> backends
+              integrating enterprise systems (WHMCS, Microsoft Dynamics NAV, Alfresco ECM, Jitsi, and .dz domain
+              registry APIs).
+            </p>
+          </div>
+
+          <div class="about-card glass-panel">
+            <h3 class="about-card-title"><i data-lucide="graduation-cap" class="color-purple"></i> University Lecturer &
+              PhD AI</h3>
+            <p class="about-card-text">
+              As an <strong>Adjunct Instructor at UYFM & UMBB</strong>, I teach C++, Linux-based Operating Systems,
+              Human-Machine Interaction (HMI), and Data Mining to university undergraduates. In parallel, my <strong>PhD
+                in AI</strong> focuses on deep learning computer vision (FR-UNet reaching 0.815 F1 on CHASE_DB1) and 3D
+              Sign Language avatars.
+            </p>
+          </div>
+
+          <div class="about-card glass-panel">
+            <h3 class="about-card-title"><i data-lucide="languages" class="color-emerald"></i> Multilingual
+              Communication</h3>
+            <p class="about-card-text" style="margin-bottom: 0.8rem;">
+              Effective cross-cultural communication, technical documentation, and multilingual app localization:
+            </p>
+            <div class="lang-lines-list">
+              <div class="lang-line-item">
+                <span class="lang-name">Arabic</span>
+                <span class="lang-level native">Native (Mother Tongue)</span>
+              </div>
+              <div class="lang-line-item">
+                <span class="lang-name">English</span>
+                <span class="lang-level fluent">Fluent (C1)</span>
+              </div>
+              <div class="lang-line-item">
+                <span class="lang-name">German</span>
+                <span class="lang-level certified">Professional (ECL B2)</span>
+              </div>
+              <div class="lang-line-item">
+                <span class="lang-name">French</span>
+                <span class="lang-level intermediate">Upper-Intermediate (B2)</span>
+              </div>
+              <div class="lang-line-item">
+                <span class="lang-name">Turkish</span>
+                <span class="lang-level beginner">Beginner (A1)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dual Focus Section -->
+    <section class="section" id="dual-focus">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="layers"></i>
+            <span>Architecture & Research</span>
+          </div>
+          <h2 class="section-title">Two Worlds. <span class="gradient-text">One Core Philosophy.</span></h2>
+          <p class="section-subtitle">
+            Bridging production mobile and backend systems with state-of-the-art computer vision and academic discovery.
+          </p>
+        </div>
+
+        <div class="dual-grid">
+          <!-- Pillar 1: Mobile & Backend Engineering -->
+          <div class="pillar-card glass-panel mobile-pillar">
+            <div class="pillar-glow"></div>
+            <div class="pillar-header">
+              <div class="pillar-icon-box">
+                <i data-lucide="smartphone"></i>
+              </div>
+              <div>
+                <span class="pillar-category">Industry Engineering</span>
+                <h3 class="pillar-title">Mobile & Enterprise Backend</h3>
+              </div>
+            </div>
+            <p class="pillar-desc">
+              Strong end-to-end ownership: from architecture and API design to deployment, performance optimization, and
+              app store release pipelines (Google Play & Apple App Store).
+            </p>
+            <ul class="pillar-features">
+              <li><i data-lucide="check-circle-2"></i> <span><strong>Clean Architecture & BLoC / GetX:</strong> Robust,
+                  modular, and testable multi-tenant Flutter applications.</span></li>
+              <li><i data-lucide="check-circle-2"></i> <span><strong>Digital Identity & KYC:</strong> NFC passport
+                  reading, MRZ scanning, biometric liveness detection, and PIN security.</span></li>
+              <li><i data-lucide="check-circle-2"></i> <span><strong>Django & Enterprise Backends:</strong> DRF APIs,
+                  Token Auth, WHMCS billing, Dynamics NAV, and Alfresco ECM.</span></li>
+              <li><i data-lucide="check-circle-2"></i> <span><strong>Real-time Telephony:</strong> WebSockets, Jitsi SDK
+                  video conferencing, push notifications (FCM/APNs).</span></li>
+            </ul>
+            <div class="pillar-tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Django / DRF</span>
+              <span class="tag">NFC / MRZ</span>
+              <span class="tag">Dynamics NAV</span>
+              <span class="tag">WHMCS</span>
+            </div>
+          </div>
+
+          <!-- Pillar 2: AI & Deep Learning Research -->
+          <div class="pillar-card glass-panel ai-pillar">
+            <div class="pillar-glow"></div>
+            <div class="pillar-header">
+              <div class="pillar-icon-box">
+                <i data-lucide="brain-circuit"></i>
+              </div>
+              <div>
+                <span class="pillar-category">Academic Research</span>
+                <h3 class="pillar-title">Deep Learning & Computer Vision</h3>
+              </div>
+            </div>
+            <p class="pillar-desc">
+              <strong>NVIDIA Certified in Deep Learning</strong>. Doctoral research at Boumerdès University focusing on
+              biomedical image segmentation and assistive 3D computer vision.
+            </p>
+            <ul class="pillar-features">
+              <li><i data-lucide="check-circle-2"></i> <span><strong>Retinal Vessel Segmentation:</strong> FR-UNet &
+                  Attention U-Net benchmarked at 0.815 F1 on CHASE_DB1.</span></li>
+              <li><i data-lucide="check-circle-2"></i> <span><strong>3D Sign Language Avatar:</strong> Published in
+                  Nafath Majlis, Qatar (Dec 2024, DOI: 10.54455/mcn2804).</span></li>
+              <li><i data-lucide="check-circle-2"></i> <span><strong>3DZSignDB Dataset:</strong> Curated open-access 3D
+                  sign dataset on Zenodo (Mar 2025, DOI: 10.5281/zenodo.15020376).</span></li>
+              <li><i data-lucide="check-circle-2"></i> <span><strong>AI Tooling:</strong> PyTorch, TensorFlow, OpenCV,
+                  scikit-learn, and NLP (nltk).</span></li>
+            </ul>
+            <div class="pillar-tags">
+              <span class="tag">NVIDIA Certified</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">FR-UNet</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">NLP (nltk)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Matrix -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="terminal"></i>
+            <span>Skill Matrix</span>
+          </div>
+          <h2 class="section-title">Technical <span class="gradient-text">Proficiencies</span></h2>
+          <p class="section-subtitle">Categorized engineering competencies, frameworks, and programming languages.</p>
+        </div>
+
+        <!-- Skills Filter Tabs -->
+        <div class="skills-filter-tabs" id="skills-filter-tabs">
+          <button class="filter-tab active" data-category="all">All Tech</button>
+          <button class="filter-tab" data-category="mobile">Mobile Development</button>
+          <button class="filter-tab" data-category="backend">Backend & Enterprise</button>
+          <button class="filter-tab" data-category="ai">Data & AI</button>
+          <button class="filter-tab" data-category="languages">Languages & Tools</button>
+        </div>
+
+        <div class="skills-grid" id="skills-grid">
+          <!-- Mobile Skills -->
+          <div class="skill-card glass-panel" data-category="mobile">
+            <div class="skill-icon-header">
+              <i data-lucide="smartphone" class="skill-icon color-cyan"></i>
+              <span class="skill-level-badge">Senior Level</span>
+            </div>
+            <h4 class="skill-name">Flutter & Dart</h4>
+            <p class="skill-desc">Clean Architecture, BLoC, GetX, Provider, Custom Paint UI, Responsive Design, App
+              Localization</p>
+          </div>
+
+          <div class="skill-card glass-panel" data-category="mobile">
+            <div class="skill-icon-header">
+              <i data-lucide="scan-face" class="skill-icon color-cyan"></i>
+              <span class="skill-level-badge">Specialized</span>
+            </div>
+            <h4 class="skill-name">NFC, MRZ & KYC Flows</h4>
+            <p class="skill-desc">NFC e-passport reading, ICAO 9303 MRZ scanner, biometric liveness detection, PIN
+              authentication</p>
+          </div>
+
+          <div class="skill-card glass-panel" data-category="mobile">
+            <div class="skill-icon-header">
+              <i data-lucide="video" class="skill-icon color-cyan"></i>
+              <span class="skill-level-badge">Production</span>
+            </div>
+            <h4 class="skill-name">WebSockets, Jitsi & FCM</h4>
+            <p class="skill-desc">Live streaming events, Jitsi SDK video conferencing integration, push notifications
+              (FCM & APNs)</p>
+          </div>
+
+          <!-- Backend & Integrations -->
+          <div class="skill-card glass-panel" data-category="backend">
+            <div class="skill-icon-header">
+              <i data-lucide="server" class="skill-icon color-emerald"></i>
+              <span class="skill-level-badge">Senior Level</span>
+            </div>
+            <h4 class="skill-name">Django & DRF APIs</h4>
+            <p class="skill-desc">Scalable backends, Token Authentication, JWT, PostgreSQL/MySQL ORM, middleware,
+              customer operations</p>
+          </div>
+
+          <div class="skill-card glass-panel" data-category="backend">
+            <div class="skill-icon-header">
+              <i data-lucide="database" class="skill-icon color-emerald"></i>
+              <span class="skill-level-badge">Enterprise</span>
+            </div>
+            <h4 class="skill-name">WHMCS & Dynamics NAV</h4>
+            <p class="skill-desc">Billing provisioning, ERP synchronization with Microsoft Dynamics NAV, Alfresco ECM,
+              WHOIS & .dz domain APIs</p>
+          </div>
+
+          <!-- Data & AI -->
+          <div class="skill-card glass-panel" data-category="ai">
+            <div class="skill-icon-header">
+              <i data-lucide="brain" class="skill-icon color-purple"></i>
+              <span class="skill-level-badge">NVIDIA Certified</span>
+            </div>
+            <h4 class="skill-name">Deep Learning & PyTorch / TF</h4>
+            <p class="skill-desc">Convolutional networks, FR-UNet, Attention U-Net, transfer learning, NVIDIA DLI
+              certification</p>
+          </div>
+
+          <div class="skill-card glass-panel" data-category="ai">
+            <div class="skill-icon-header">
+              <i data-lucide="eye" class="skill-icon color-purple"></i>
+              <span class="skill-level-badge">Advanced</span>
+            </div>
+            <h4 class="skill-name">OpenCV & NLP (nltk)</h4>
+            <p class="skill-desc">Biomedical image preprocessing, CLAHE filtering, scikit-learn, natural language
+              processing with NLTK</p>
+          </div>
+
+          <!-- Languages & Tools -->
+          <div class="skill-card glass-panel" data-category="languages">
+            <div class="skill-icon-header">
+              <i data-lucide="code-2" class="skill-icon color-amber"></i>
+              <span class="skill-level-badge">Core Languages</span>
+            </div>
+            <h4 class="skill-name">Dart, Python, C++, Java</h4>
+            <p class="skill-desc">Object-oriented architecture, C++ systems programming, Python AI pipelines, Java
+              Android bridges</p>
+          </div>
+
+          <div class="skill-card glass-panel" data-category="languages">
+            <div class="skill-icon-header">
+              <i data-lucide="git-merge" class="skill-icon color-amber"></i>
+              <span class="skill-level-badge">DevOps & Stores</span>
+            </div>
+            <h4 class="skill-name">Git, Linux & App Stores</h4>
+            <p class="skill-desc">GitLab/GitHub CI/CD, Linux system administration, Google Play Console & Apple App
+              Store Connect deployment</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="folder-code"></i>
+            <span>Portfolio Showcase</span>
+          </div>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-subtitle">Real-world production systems, enterprise integrations, and open-source research
+            code.</p>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="projects-filter-bar">
+          <button class="proj-filter active" data-filter="all">All Projects</button>
+          <button class="proj-filter" data-filter="mobile">Mobile Apps</button>
+          <button class="proj-filter" data-filter="ai">AI & Vision</button>
+          <button class="proj-filter" data-filter="systems">Desktop & Systems</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- Project 1: orthoConnect (Flutter Desktop) -->
+          <div class="project-card glass-panel" data-category="systems">
+            <div class="project-banner bg-gradient-blue">
+              <div class="project-icon-large"><i data-lucide="stethoscope"></i></div>
+              <span class="project-badge">Flutter Desktop</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-lang">Flutter / Windows</span>
+                <span class="project-status">Public</span>
+              </div>
+              <h3 class="project-title">orthoConnect</h3>
+              <p class="project-description">
+                A dedicated Windows practice management application built with Flutter Desktop and SQLite for orthopedic
+                practitioners, streamlining patient records, consultation history, and appointment scheduling.
+              </p>
+              <div class="project-tags">
+                <span>Flutter Desktop</span>
+                <span>Windows FFI</span>
+                <span>SQLite (FFI)</span>
+                <span>GetX</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/MFaresSlimani/orthoConnect" target="_blank" rel="noopener"
+                  class="project-link">
+                  <i data-lucide="github"></i> Repository
+                </a>
+                <button class="project-detail-btn" data-project="orthoConnect">
+                  Details <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Rizervitoo (Rezervitoo) -->
+          <div class="project-card glass-panel" data-category="mobile">
+            <div class="project-banner bg-gradient-emerald">
+              <div class="project-icon-large"><i data-lucide="map-pin"></i></div>
+              <span class="project-badge">Tourism & Rentals</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-lang">Flutter / Supabase</span>
+                <span class="project-status">Public</span>
+              </div>
+              <h3 class="project-title">Rezervitoo (DZ Rentals)</h3>
+              <p class="project-description">
+                Modern tourism and property rental application in Algeria covering 58 wilayas. Powered by Supabase
+                backend, travel guide recommendations, property bookings, and full multilingual support (AR/EN/FR).
+              </p>
+              <div class="project-tags">
+                <span>Flutter</span>
+                <span>Supabase</span>
+                <span>GetX</span>
+                <span>58 Wilayas</span>
+                <span>Multilingual</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/MFaresSlimani/Rizervitoo" target="_blank" rel="noopener"
+                  class="project-link">
+                  <i data-lucide="github"></i> Repository
+                </a>
+                <button class="project-detail-btn" data-project="Rizervitoo">
+                  Details <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Sandooq-app (Musharek) -->
+          <div class="project-card glass-panel" data-category="mobile">
+            <div class="project-banner bg-gradient-amber">
+              <div class="project-icon-large"><i data-lucide="wallet"></i></div>
+              <span class="project-badge">Fintech Mobile</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-lang">Flutter / Fintech</span>
+                <span class="project-status">Public</span>
+              </div>
+              <h3 class="project-title">Musharek (مشارك)</h3>
+              <p class="project-description">
+                A fintech mobile application digitalizing traditional community rotating savings circles ("دوائر" /
+                ROSCA) with Supabase backend, Cairo Arabic typography, and automated turn-based payout tracking.
+              </p>
+              <div class="project-tags">
+                <span>Flutter</span>
+                <span>Fintech</span>
+                <span>GetX</span>
+                <span>Supabase</span>
+                <span>Savings Circles</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/MFaresSlimani/Sandooq-app" target="_blank" rel="noopener"
+                  class="project-link">
+                  <i data-lucide="github"></i> Repository
+                </a>
+                <button class="project-detail-btn" data-project="Sandooq-app">
+                  Details <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: EZ-Check-in -->
+          <div class="project-card glass-panel" data-category="mobile">
+            <div class="project-banner bg-gradient-purple">
+              <div class="project-icon-large"><i data-lucide="qr-code"></i></div>
+              <span class="project-badge">Event Tech (GDG)</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-lang">Flutter / Dart</span>
+                <span class="project-status">GDG Medea</span>
+              </div>
+              <h3 class="project-title">EZ-Check-in</h3>
+              <p class="project-description">
+                High-performance QR code ticketing and rapid attendee check-in application engineered for Google
+                Developer Group (GDG) Medea tech conferences (DevFest & I/O Extended).
+              </p>
+              <div class="project-tags">
+                <span>Flutter</span>
+                <span>QR Scanner</span>
+                <span>Camera SDK</span>
+                <span>GDG Community</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/MFaresSlimani/EZ-Check-in" target="_blank" rel="noopener"
+                  class="project-link">
+                  <i data-lucide="github"></i> Repository
+                </a>
+                <button class="project-detail-btn" data-project="EZ-Check-in">
+                  Details <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Optica -->
+          <div class="project-card glass-panel" data-category="mobile">
+            <div class="project-banner bg-gradient-blue">
+              <div class="project-icon-large"><i data-lucide="glasses"></i></div>
+              <span class="project-badge">E-Commerce</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-lang">Flutter / Mobile</span>
+                <span class="project-status">Public</span>
+              </div>
+              <h3 class="project-title">Optica Eyewear</h3>
+              <p class="project-description">
+                Modern optical eyewear shopping application in Flutter for browsing glasses collections, frame
+                customization with interactive wheel pickers, and smooth GetX checkout flows.
+              </p>
+              <div class="project-tags">
+                <span>Flutter</span>
+                <span>GetX</span>
+                <span>Wheel Picker</span>
+                <span>E-Commerce</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/MFaresSlimani/optica_beta" target="_blank" rel="noopener"
+                  class="project-link">
+                  <i data-lucide="github"></i> Repository
+                </a>
+                <button class="project-detail-btn" data-project="optica_beta">
+                  Details <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Algerian Sign Language Avatar -->
+          <div class="project-card glass-panel" data-category="ai">
+            <div class="project-banner bg-gradient-cyan">
+              <div class="project-icon-large"><i data-lucide="bot"></i></div>
+              <span class="project-badge">AI & 3D Vision</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-lang">3D Web & AI</span>
+                <span class="project-status">Live Demo</span>
+              </div>
+              <h3 class="project-title">Algerian Sign Language Avatar</h3>
+              <p class="project-description">
+                A 3D avatar animation system translating Arabic phrases into Algerian Sign Language gestures,
+                peer-reviewed in Nafath Majlis (Qatar, DOI: 10.54455/mcn2804) and dataset on Zenodo.
+              </p>
+              <div class="project-tags">
+                <span>3D Avatar</span>
+                <span>WebGL</span>
+                <span>Python NLP</span>
+                <span>Zenodo Dataset</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://3dasl-avatar.vercel.app/" target="_blank" rel="noopener" class="project-link">
+                  <i data-lucide="globe"></i> Live Demo
+                </a>
+                <button class="project-detail-btn" data-project="algerianSignLanguage-avatar">
+                  Details <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 7: Retinal Vessel Segmentation -->
+          <div class="project-card glass-panel" data-category="ai">
+            <div class="project-banner bg-gradient-purple">
+              <div class="project-icon-large"><i data-lucide="eye"></i></div>
+              <span class="project-badge">PhD Research</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span class="project-lang">PyTorch / DL</span>
+                <span class="project-status">0.815 F1</span>
+              </div>
+              <h3 class="project-title">Retinal Vessel Deep Segmentation</h3>
+              <p class="project-description">
+                High-precision deep learning pipeline applying FR-UNet and Attention U-Net on biomedical fundus datasets
+                (CHASE_DB1) achieving state-of-the-art 0.815 F1 segmentation boundaries.
+              </p>
+              <div class="project-tags">
+                <span>FR-UNet</span>
+                <span>PyTorch</span>
+                <span>CHASE_DB1</span>
+                <span>Biomedical AI</span>
+              </div>
+              <div class="project-footer">
+                <a href="#research" class="project-link">
+                  <i data-lucide="book-open"></i> Read Research
+                </a>
+                <button class="project-detail-btn" data-project="Retinal-AI">
+                  Details <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research, Publications & Certifications Section -->
+    <section class="section" id="research">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="award"></i>
+            <span>Academic & Industry Accreditations</span>
+          </div>
+          <h2 class="section-title">Publications & <span class="gradient-text">Certifications</span></h2>
+          <p class="section-subtitle">Peer-reviewed publications, open scientific datasets, and professional
+            credentials.</p>
+        </div>
+
+        <!-- Certifications Row -->
+        <div class="certs-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+          <div class="cert-card glass-panel"
+            style="padding: 1.8rem; display: flex; align-items: center; gap: 1.2rem; border-color: rgba(16, 185, 129, 0.3);">
+            <div
+              style="width: 52px; height: 52px; border-radius: var(--radius-md); background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; color: var(--accent-emerald); font-size: 1.5rem; flex-shrink: 0;">
+              <i data-lucide="award"></i>
+            </div>
+            <div>
+              <span
+                style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">NVIDIA
+                DEEP LEARNING INSTITUTE</span>
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #fff; margin: 0.2rem 0;">
+                Fundamentals of Deep Learning</h4>
+              <p style="font-size: 0.82rem; color: var(--text-dim); font-family: var(--font-mono);">Issued October 2022
+                &bull; NVIDIA Certified</p>
+            </div>
+          </div>
+
+          <div class="cert-card glass-panel"
+            style="padding: 1.8rem; display: flex; align-items: center; gap: 1.2rem; border-color: rgba(6, 182, 212, 0.3);">
+            <div
+              style="width: 52px; height: 52px; border-radius: var(--radius-md); background: rgba(6, 182, 212, 0.15); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); font-size: 1.5rem; flex-shrink: 0;">
+              <i data-lucide="languages"></i>
+            </div>
+            <div>
+              <span
+                style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">ECL
+                LANGUAGE ASSESSMENT</span>
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #fff; margin: 0.2rem 0;">ECL
+                Zertifikat Deutsch B2</h4>
+              <p style="font-size: 0.82rem; color: var(--text-dim); font-family: var(--font-mono);">German Language
+                Proficiency &bull; B2 Certified (ECL)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="research-timeline">
+          <!-- Publication 1 -->
+          <div class="research-card glass-panel">
+            <div class="research-badge-row">
+              <span class="pub-type conference">Conference Paper</span>
+              <span class="pub-date">December 2024</span>
+              <span class="pub-venue">Nafath Majlis &bull; Qatar</span>
+            </div>
+            <h3 class="pub-title">3D Avatar for Algerian Sign Language</h3>
+            <p class="pub-authors"><strong>Mohamed Fares Slimani</strong>, et al.</p>
+            <p class="pub-abstract">
+              Presents an innovative 3D digital human avatar system developed specifically for the synthesis of Algerian
+              Sign Language. The work bridges assistive technology and multimodal computer vision to empower
+              hearing-impaired communities.
+            </p>
+            <div class="pub-actions">
+              <a href="https://doi.org/10.54455/mcn2804" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                <i data-lucide="external-link"></i> View DOI (10.54455/mcn2804)
+              </a>
+              <span class="doi-pill">DOI: 10.54455/mcn2804</span>
+            </div>
+          </div>
+
+          <!-- Publication 2 -->
+          <div class="research-card glass-panel">
+            <div class="research-badge-row">
+              <span class="pub-type dataset">Open Science Dataset</span>
+              <span class="pub-date">March 2025</span>
+              <span class="pub-venue">Zenodo Repository</span>
+            </div>
+            <h3 class="pub-title">3DZSignDB: 3D Algerian Sign Language Gesture Dataset</h3>
+            <p class="pub-authors"><strong>Mohamed Fares Slimani</strong>, et al.</p>
+            <p class="pub-abstract">
+              A comprehensive open-access dataset capturing calibrated 3D geometric coordinate sequences, motion
+              vectors, and sign annotations for Algerian Sign Language research, training, and avatar benchmarking.
+            </p>
+            <div class="pub-actions">
+              <a href="https://doi.org/10.5281/zenodo.15020376" target="_blank" rel="noopener"
+                class="btn btn-sm btn-secondary">
+                <i data-lucide="database"></i> Zenodo Repository
+              </a>
+              <span class="doi-pill">DOI: 10.5281/zenodo.15020376</span>
+            </div>
+          </div>
+
+          <!-- PhD Research Focus -->
+          <div class="research-card glass-panel active-phd">
+            <div class="research-badge-row">
+              <span class="pub-type phd">Current PhD Dissertation</span>
+              <span class="pub-date">Boumerdès University (Feb 2025 – Now)</span>
+              <span class="pub-venue">Medical Computer Vision</span>
+            </div>
+            <h3 class="pub-title">Deep Learning for Retinal Vessel Segmentation</h3>
+            <p class="pub-authors"><strong>Mohamed Fares Slimani</strong> (Doctoral Candidate)</p>
+            <p class="pub-abstract">
+              Investigating novel feature-refinement and multi-scale attention architectures (FR-UNet, Attention U-Net)
+              for micro-vessel segmentation in retinal fundus photography, achieving an 0.815 F1 score on CHASE_DB1 to
+              accelerate early diagnosis of diabetic retinopathy.
+            </p>
+            <div class="pub-highlights">
+              <div class="highlight-chip">
+                <span class="chip-label">Benchmark F1:</span>
+                <span class="chip-value">0.815 on CHASE_DB1</span>
+              </div>
+              <div class="highlight-chip">
+                <span class="chip-label">Frameworks:</span>
+                <span class="chip-value">PyTorch, TorchVision, OpenCV</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Timeline Section -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="briefcase"></i>
+            <span>Professional Career</span>
+          </div>
+          <h2 class="section-title">Work & <span class="gradient-text">Experience</span></h2>
+          <p class="section-subtitle">Track record of shipping production apps, building scalable backends, and
+            mentoring engineers.</p>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Role 1: Senior Mobile Engineer -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i data-lucide="smartphone"></i>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-meta">
+                <span class="timeline-role">Senior Mobile Engineer</span>
+                <span class="timeline-company">@ ICOSNET SPA</span>
+                <span class="timeline-date">Aug 2025 – Present &bull; Algiers</span>
+              </div>
+              <p class="timeline-text">
+                • Led development of multiple production-grade mobile applications for telecom clients, including video
+                conferencing, fintech payments, digital identity verification, and full client-account management.<br>
+                • Built and maintained a scalable Django backend powering authentication, billing, product management,
+                and customer operations for thousands of ICOSNET users.<br>
+                • Integrated enterprise systems: WHMCS, Microsoft Dynamics NAV, Alfresco ECM, Jitsi, WHOIS, and .dz
+                domain registry APIs.<br>
+                • Engineered secure mobile flows involving NFC identity reading, MRZ passport scanning, liveness
+                detection, and end-to-end KYC onboarding.<br>
+                • Delivered multilingual apps with PIN-secured access, push notifications (FCM/APNs), and published
+                stable builds to both app stores.
+              </p>
+              <div class="timeline-tags">
+                <span>Flutter</span>
+                <span>Django / DRF</span>
+                <span>NFC / MRZ</span>
+                <span>Dynamics NAV</span>
+                <span>WHMCS</span>
+                <span>App Store / Play Store</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role 2: Adjunct Instructor -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-meta">
+                <span class="timeline-role">Adjunct Instructor — OS, HMI & Data Mining</span>
+                <span class="timeline-company">@ UYFM & UMBB</span>
+                <span class="timeline-date">2024 – Present</span>
+              </div>
+              <p class="timeline-text">
+                • Delivered practical C++ and Linux-based Operating Systems sessions to undergraduate students.<br>
+                • Taught Human–Machine Interaction (HMI) and Data Mining courses at UMBB, focusing on applied concepts
+                and hands-on algorithm implementation.
+              </p>
+              <div class="timeline-tags">
+                <span>University Teaching</span>
+                <span>C++</span>
+                <span>Linux Operating Systems</span>
+                <span>Data Mining</span>
+                <span>HMI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role 3: Freelance Flutter Developer -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i data-lucide="layers"></i>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-meta">
+                <span class="timeline-role">Freelance Flutter Developer</span>
+                <span class="timeline-company">@ Independent</span>
+                <span class="timeline-date">2022 – Present</span>
+              </div>
+              <p class="timeline-text">
+                • Delivered 15+ mobile applications tailored for Algerian businesses and social causes.<br>
+                • Focused on high performance, clean UI, GetX & Clean Architecture, and seamless backend integrations.
+              </p>
+              <div class="timeline-tags">
+                <span>Flutter</span>
+                <span>GetX</span>
+                <span>Clean Architecture</span>
+                <span>15+ Delivered Apps</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role 4: Programming Instructor -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <i data-lucide="book-open"></i>
+            </div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-meta">
+                <span class="timeline-role">Programming Instructor</span>
+                <span class="timeline-company">@ Benyan Tech, CTL School, Kafil Al Yateem</span>
+                <span class="timeline-date">2022 – 2025</span>
+              </div>
+              <p class="timeline-text">
+                • Delivered comprehensive AI, web, and programming curriculum to students and aspiring developers across
+                private institutions and charitable training initiatives.
+              </p>
+              <div class="timeline-tags">
+                <span>Education</span>
+                <span>Mentorship</span>
+                <span>AI & Web Foundations</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="school"></i>
+            <span>Academic Degrees</span>
+          </div>
+          <h2 class="section-title">Education & <span class="gradient-text">Degrees</span></h2>
+          <p class="section-subtitle">Academic milestones in Computer Science and Systems Engineering.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Degree 1 -->
+          <div class="about-card glass-panel" style="border-color: rgba(99, 102, 241, 0.3);">
+            <div
+              style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-indigo); margin-bottom: 0.5rem;">
+              Feb 2025 – Present</div>
+            <h3 class="about-card-title" style="font-size: 1.25rem;"><i data-lucide="brain-circuit"
+                class="color-purple"></i> PhD in Artificial Intelligence</h3>
+            <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 0.5rem;">Boumerdès University (UMBB)
+            </p>
+            <p class="about-card-text">
+              Doctoral research in deep learning, biomedical computer vision, retinal vessel segmentation, and
+              multimodal sign language avatars.
+            </p>
+          </div>
+
+          <!-- Degree 2 -->
+          <div class="about-card glass-panel">
+            <div
+              style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">
+              2022 – 2024</div>
+            <h3 class="about-card-title" style="font-size: 1.25rem;"><i data-lucide="network" class="color-cyan"></i>
+              Master’s in Systems Engineering</h3>
+            <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 0.5rem;">University of Medea</p>
+            <p class="about-card-text">
+              Specialized in Web Technologies, distributed architectures, network security, and advanced software
+              engineering methodologies.
+            </p>
+          </div>
+
+          <!-- Degree 3 -->
+          <div class="about-card glass-panel">
+            <div
+              style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-emerald); margin-bottom: 0.5rem;">
+              2019 – 2022</div>
+            <h3 class="about-card-title" style="font-size: 1.25rem;"><i data-lucide="code" class="color-emerald"></i>
+              Bachelor’s in Computer Science</h3>
+            <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 0.5rem;">University of Medea</p>
+            <p class="about-card-text">
+              Core foundations in data structures, algorithms, operating systems, database management, and computer
+              programming.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community, Volunteering & Languages Section -->
+    <section class="section" id="community">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="heart-handshake"></i>
+            <span>Community & Fluency</span>
+          </div>
+          <h2 class="section-title">Volunteering & <span class="gradient-text">Languages</span></h2>
+          <p class="section-subtitle">Community engagement, language proficiencies, and athletic background.</p>
+        </div>
+
+        <div class="dual-grid">
+          <!-- Community & Volunteering -->
+          <div class="pillar-card glass-panel">
+            <div class="pillar-header">
+              <div class="pillar-icon-box" style="color: var(--accent-cyan);">
+                <i data-lucide="users"></i>
+              </div>
+              <div>
+                <span class="pillar-category">Social Impact</span>
+                <h3 class="pillar-title">Community & Volunteering</h3>
+              </div>
+            </div>
+            <p class="pillar-desc">
+              Active contributor to developer communities and charitable initiatives:
+            </p>
+            <ul class="pillar-features">
+              <li><i data-lucide="check-circle-2" style="color: var(--accent-cyan);"></i> <span><strong>Google
+                    Developers Group (GDG) Medea:</strong> Built EZ-Check-in & facilitated workshops.</span></li>
+              <li><i data-lucide="check-circle-2" style="color: var(--accent-cyan);"></i>
+                <span><strong>Techverse:</strong> Tech mentorship and software workshops.</span>
+              </li>
+              <li><i data-lucide="check-circle-2" style="color: var(--accent-cyan);"></i> <span><strong>Kafil Al Yateem,
+                    Al Kalam & Nass El Khier:</strong> Delivered youth coding lessons and community support.</span></li>
+              <li><i data-lucide="check-circle-2" style="color: var(--accent-cyan);"></i>
+                <span><strong>Athletics:</strong> Dedicated background in calisthenics, gym training, and athletic
+                  discipline.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Spoken Languages -->
+          <div class="pillar-card glass-panel">
+            <div class="pillar-header">
+              <div class="pillar-icon-box" style="color: var(--accent-violet);">
+                <i data-lucide="languages"></i>
+              </div>
+              <div>
+                <span class="pillar-category">Linguistic Capabilities</span>
+                <h3 class="pillar-title">Spoken Languages</h3>
+              </div>
+            </div>
+            <p class="pillar-desc" style="margin-bottom: 1.25rem;">
+              Proficiency across global engineering teams, academic research, and international collaboration:
+            </p>
+            <div class="language-bars-list">
+              <!-- Arabic -->
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-bar-title"><span class="lang-code">AR</span> Arabic</span>
+                  <span class="lang-bar-badge badge-native">Native (Mother Tongue)</span>
+                </div>
+                <div class="lang-progress-track">
+                  <div class="lang-progress-fill fill-native" style="width: 100%;"></div>
+                </div>
+              </div>
+
+              <!-- English -->
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-bar-title"><span class="lang-code">EN</span> English</span>
+                  <span class="lang-bar-badge badge-fluent">Fluent (C1)</span>
+                </div>
+                <div class="lang-progress-track">
+                  <div class="lang-progress-fill fill-fluent" style="width: 88%;"></div>
+                </div>
+              </div>
+
+              <!-- German -->
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-bar-title"><span class="lang-code">DE</span> German</span>
+                  <span class="lang-bar-badge badge-certified">Upper-Intermediate (ECL B2)</span>
+                </div>
+                <div class="lang-progress-track">
+                  <div class="lang-progress-fill fill-german" style="width: 72%;"></div>
+                </div>
+              </div>
+
+              <!-- French -->
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-bar-title"><span class="lang-code">FR</span> French</span>
+                  <span class="lang-bar-badge badge-intermediate">Upper-Intermediate (B2)</span>
+                </div>
+                <div class="lang-progress-track">
+                  <div class="lang-progress-fill fill-french" style="width: 67%;"></div>
+                </div>
+              </div>
+
+              <!-- Turkish -->
+              <div class="lang-bar-item">
+                <div class="lang-bar-header">
+                  <span class="lang-bar-title"><span class="lang-code">TR</span> Turkish</span>
+                  <span class="lang-bar-badge badge-beginner">Beginner (A1)</span>
+                </div>
+                <div class="lang-progress-track">
+                  <div class="lang-progress-fill fill-turkish" style="width: 25%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live GitHub Activity Section -->
+    <section class="section" id="github-activity">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="git-pull-request"></i>
+            <span>Open Source</span>
+          </div>
+          <h2 class="section-title">Live GitHub <span class="gradient-text">Activity</span></h2>
+          <p class="section-subtitle">Directly synchronized with GitHub profile <strong>@MFaresSlimani</strong>.</p>
+        </div>
+
+        <div class="github-stats-container glass-panel">
+          <div class="gh-user-banner">
+            <div class="gh-user-left">
+              <img src="https://avatars.githubusercontent.com/u/62572098?v=4" alt="MFaresSlimani" class="gh-avatar">
+              <div>
+                <h3 class="gh-username">Mohamed Fares Slimani <span class="gh-handle">@MFaresSlimani</span></h3>
+                <p class="gh-location"><i data-lucide="map-pin"></i> Algiers, Algeria</p>
+              </div>
+            </div>
+            <a href="https://github.com/MFaresSlimani" target="_blank" rel="noopener" class="btn btn-sm btn-ghost">
+              <i data-lucide="external-link"></i> Open GitHub Profile
+            </a>
+          </div>
+
+          <div class="gh-repos-grid" id="github-repos-grid">
+            <!-- Dynamic Repos injected by script.js -->
+            <div class="gh-loading-state">
+              <div class="spinner"></div>
+              <span>Fetching live repositories...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Connect Section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i data-lucide="send"></i>
+            <span>Get in Touch</span>
+          </div>
+          <h2 class="section-title">Let's Build Something <span class="gradient-text">Remarkable</span></h2>
+          <p class="section-subtitle">
+            Open to senior mobile engineering roles, AI research collaborations, and technical consulting.
+          </p>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-info-panel glass-panel">
+            <h3 class="contact-panel-title">Direct Contact Channels</h3>
+            <p class="contact-panel-desc">
+              Feel free to reach out directly via email, phone, or LinkedIn.
+            </p>
+
+            <div class="contact-details-list">
+              <div class="contact-item">
+                <div class="contact-icon bg-cyan">
+                  <i data-lucide="mail"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Email</span>
+                  <a href="mailto:faresslimani0@gmail.com" class="contact-val">faresslimani0@gmail.com</a>
+                </div>
+                <button class="copy-btn" id="copy-email-action" title="Copy Email">
+                  <i data-lucide="copy"></i>
+                </button>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon bg-emerald">
+                  <i data-lucide="phone"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Phone / WhatsApp</span>
+                  <a href="tel:+213558139901" class="contact-val">+213 558 139 901</a>
+                </div>
+                <button class="copy-btn" id="copy-phone-action" title="Copy Phone Number">
+                  <i data-lucide="copy"></i>
+                </button>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon bg-blue">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">LinkedIn</span>
+                  <a href="https://www.linkedin.com/in/faresslimani01/" target="_blank" rel="noopener"
+                    class="contact-val">linkedin.com/in/faresslimani01</a>
+                </div>
+                <a href="https://www.linkedin.com/in/faresslimani01/" target="_blank" rel="noopener" class="copy-btn"
+                  title="Open Link">
+                  <i data-lucide="external-link"></i>
+                </a>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon bg-purple">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">GitHub</span>
+                  <a href="https://github.com/MFaresSlimani" target="_blank" rel="noopener"
+                    class="contact-val">github.com/MFaresSlimani</a>
+                </div>
+                <a href="https://github.com/MFaresSlimani" target="_blank" rel="noopener" class="copy-btn"
+                  title="Open Link">
+                  <i data-lucide="external-link"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="hobbies-box">
+              <span class="hobbies-title">Outside of code:</span>
+              <div class="hobbies-tags">
+                <span><i data-lucide="dumbbell"></i> Calisthenics & Gym</span>
+                <span><i data-lucide="gamepad-2"></i> Gaming</span>
+                <span><i data-lucide="music"></i> Music</span>
+                <span><i data-lucide="languages"></i> Languages & Linguistics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-panel glass-panel">
+            <h3 class="contact-panel-title">Send a Direct Message</h3>
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="form-name">Your Name</label>
+                <input type="text" id="form-name" placeholder="e.g. John Doe / Engineering Recruiter" required>
+              </div>
+              <div class="form-group">
+                <label for="form-email">Your Email</label>
+                <input type="email" id="form-email" placeholder="e.g. john@company.com" required>
+              </div>
+              <div class="form-group">
+                <label for="form-subject">Subject</label>
+                <input type="text" id="form-subject" placeholder="Project inquiry / Mobile consulting / AI research"
+                  required>
+              </div>
+              <div class="form-group">
+                <label for="form-message">Message</label>
+                <textarea id="form-message" rows="5"
+                  placeholder="Hi Mohamed, I saw your portfolio and would like to discuss..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-glow btn-block" id="form-submit-btn">
+                <i data-lucide="send" class="btn-icon"></i>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <a href="#hero" class="brand-logo">
+          <span class="logo-bracket">&lt;</span>M.Fares<span class="logo-accent">.AI</span><span
+            class="logo-bracket">/&gt;</span>
+        </a>
+        <p class="footer-tagline">Mohamed Fares Slimani &bull; Senior Mobile Engineer &bull; PhD AI Researcher</p>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://github.com/MFaresSlimani" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/faresslimani01/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="mailto:faresslimani0@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
+        <a href="tel:+213558139901" aria-label="Phone"><i data-lucide="phone"></i></a>
+      </div>
+
+      <div class="footer-right">
+        <p>&copy; <span id="current-year">2026</span> Mohamed Fares Slimani. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Details Modal -->
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true">
+    <div class="modal-card glass-panel" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+      <div id="modal-body-content">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast" role="alert" aria-live="polite">
+    <i data-lucide="check-circle-2" class="toast-icon"></i>
+    <span class="toast-message" id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to Top">
+    <i data-lucide="chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
