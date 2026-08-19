@@ -559,14 +559,28 @@ async function initGitHubRepos() {
     }
   ];
 
-  try {
-    const response = await fetch('https://api.github.com/users/MFaresSlimani/repos?sort=updated&per_page=6');
-    if (!response.ok) throw new Error('Network error');
-    const repos = await response.json();
+  const ignoredPatterns = [
+    /faresslimani/i,
+    /gitlearning/i,
+    /portfolio/i,
+    /\.github\.io/i
+  ];
 
-    if (repos && Array.isArray(repos) && repos.length > 0) {
-      renderRepos(repos, container);
-      return;
+  try {
+    const response = await fetch('https://api.github.com/users/MFaresSlimani/repos?sort=updated&per_page=20');
+    if (!response.ok) throw new Error('Network error');
+    const rawRepos = await response.json();
+
+    if (rawRepos && Array.isArray(rawRepos) && rawRepos.length > 0) {
+      const validRepos = rawRepos.filter((repo) => {
+        const name = (repo.name || '').toLowerCase();
+        return !ignoredPatterns.some((pattern) => pattern.test(name));
+      });
+
+      if (validRepos.length > 0) {
+        renderRepos(validRepos, container);
+        return;
+      }
     }
     renderRepos(fallbackRepos, container);
   } catch (err) {
