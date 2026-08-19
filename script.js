@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGitHubRepos();
   initContactForm();
   initToast();
+  initEasterEggs();
 });
 
 /* ==========================================================================
@@ -708,3 +709,129 @@ function showToast(message) {
     toast.classList.remove('show');
   }, 3500);
 }
+
+/* ==========================================================================
+   9. Easter Eggs (Interactive Kitten Tsuki & Konami Code)
+   ========================================================================== */
+function initEasterEggs() {
+  // --- A. Interactive Peeking Kitten (Tsuki) ---
+  const kitten = document.getElementById('kitten-easter-egg');
+  const bubble = document.getElementById('kitten-bubble');
+
+  const meowPhrases = [
+    'Meow! 🐾',
+    'Purrr... ✨',
+    'You found Tsuki! 🌙',
+    'Need a Senior Mobile Engineer? 🚀',
+    'Building cool things with Flutter & AI 💻',
+    '100% bug-free (I ate all the bugs) 🐱',
+    'ECL B2 German Certified! Sehr gut! 🇩🇪',
+    '58 Wilayas of Algeria explored! 🗺️',
+    'Keep petting me! ❤️',
+    'Flutter is awesome! 💙'
+  ];
+
+  let petCount = 0;
+  let phraseIdx = 0;
+  const particleIcons = ['🐾', '✨', '❤️', '🌙', '⚡', '🐱', '💖'];
+
+  if (kitten && bubble) {
+    kitten.addEventListener('click', (e) => {
+      petCount++;
+      phraseIdx = (phraseIdx + 1) % meowPhrases.length;
+
+      // Update speech bubble
+      bubble.textContent = meowPhrases[phraseIdx];
+      bubble.classList.add('show');
+
+      // Spawn floating click particle
+      const rect = kitten.getBoundingClientRect();
+      const particle = document.createElement('div');
+      particle.className = 'kitten-particle';
+      particle.textContent = particleIcons[Math.floor(Math.random() * particleIcons.length)];
+      particle.style.left = `${rect.left + rect.width / 2 + (Math.random() * 30 - 15)}px`;
+      particle.style.top = `${rect.top - 10}px`;
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 1200);
+
+      // Secret Petting Achievement
+      if (petCount === 7) {
+        bubble.textContent = '🏆 Achievement Unlocked: Cat Whisperer! 🐾';
+        showToast('🐱 You unlocked the Cat Whisperer achievement!');
+      }
+
+      // Hide bubble after 2.5s if not hovered
+      setTimeout(() => {
+        if (!kitten.matches(':hover')) {
+          bubble.classList.remove('show');
+        }
+      }, 2500);
+    });
+  }
+
+  // --- B. Konami Code (↑ ↑ ↓ ↓ ← → ← → B A) ---
+  const konamiSequence = [
+    'ArrowUp',
+    'ArrowUp',
+    'ArrowDown',
+    'ArrowDown',
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowLeft',
+    'ArrowRight',
+    'KeyB',
+    'KeyA'
+  ];
+  let konamiIndex = 0;
+
+  window.addEventListener('keydown', (e) => {
+    const code = e.code || e.key;
+    const targetKey = konamiSequence[konamiIndex];
+
+    if (code === targetKey || e.key.toLowerCase() === targetKey.replace('Key', '').toLowerCase()) {
+      konamiIndex++;
+      if (konamiIndex === konamiSequence.length) {
+        konamiIndex = 0;
+        activatePartyMode();
+      }
+    } else {
+      konamiIndex = 0;
+    }
+  });
+
+  function activatePartyMode() {
+    document.body.classList.add('party-mode');
+    showToast('🎮 Konami Code Activated: Cyber Neon Mode! 🚀');
+
+    if (bubble) {
+      bubble.textContent = '⚡ PARTY TIME! ⚡';
+      bubble.classList.add('show');
+    }
+
+    setTimeout(() => {
+      document.body.classList.remove('party-mode');
+    }, 10000);
+  }
+
+  // --- C. Developer Console Greeting ---
+  try {
+    console.log(
+      `%c
+ /\\_/\\  
+( o.o )  Mohamed Fares Slimani (Tsuki)
+ > ^ <   Senior Mobile Engineer & AI PhD Researcher
+`,
+      'color: #38bdf8; font-weight: bold; font-family: monospace; font-size: 14px;'
+    );
+    console.log(
+      '%c🚀 Welcome, fellow developer! Explore the portfolio repository at https://github.com/MFaresSlimani',
+      'color: #a78bfa; font-size: 12px; font-weight: 600;'
+    );
+  } catch (err) {
+    // Silent
+  }
+}
+
