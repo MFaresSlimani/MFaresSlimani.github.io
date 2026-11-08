@@ -394,18 +394,18 @@ const projectDetailsData = {
     techStack: ['Flutter', 'Dart', 'GetX', 'Supabase', 'Cairo Typography', 'Material 3', 'Fintech Architecture']
   },
   optica_beta: {
-    title: 'Optica — Optical Eyewear & Glasses Catalog',
-    category: 'E-Commerce Mobile Application (Flutter)',
+    title: 'Optica: Request Network for Optical Stores',
+    category: 'B2B Mobile Application (Flutter + Supabase)',
     repoUrl: 'https://github.com/MFaresSlimani/optica_beta',
     overview:
-      'A sleek optical eyewear shopping and discovery application built with Flutter, allowing customers to explore designer frames, customize optical lenses, and select glasses tailored to their style.',
+      'A Flutter app that lets optical stores send each other lens and frame requests, track what was fulfilled, and print tickets, backed by Supabase with Row Level Security.',
     keyFeatures: [
-      'Interactive catalog showcasing optical glasses and sunglasses collections with high-res imagery.',
-      'Custom wheel pickers for intuitive frame color and dimension selection.',
-      'Smooth animations and responsive layouts engineered with GetX state management.',
-      'Shopping cart and checkout flows designed for effortless mobile purchasing.'
+      'Store-owner accounts with store profiles and image galleries (Supabase Auth + Storage).',
+      'Request inbox/outbox with per-item tracking of fulfilled and remaining glasses.',
+      'USB thermal ticket printing with a preview screen.',
+      '3-layer GetX architecture (core/data/presentation), full i18n, named routes only.'
     ],
-    techStack: ['Flutter', 'Dart', 'GetX', 'Wheel Picker', 'Google Fonts', 'Mobile E-Commerce']
+    techStack: ['Flutter', 'Dart', 'GetX', 'Supabase', 'PostgreSQL RLS', 'Hive', 'Thermal Printing']
   },
   'algerianSignLanguage-avatar': {
     title: 'Algerian Sign Language 3D Avatar System',
@@ -430,7 +430,7 @@ const projectDetailsData = {
     overview:
       'Advanced biomedical image processing pipeline applying deep convolutional networks (FR-UNet and Attention U-Net) to achieve high-accuracy micro-vessel segmentation in retinal fundus photography.',
     keyFeatures: [
-      'Achieved a verified 0.815 F1-score benchmark on the CHASE_DB1 retinal dataset.',
+      'Reproduced and benchmarked FR-UNet at 0.815 F1 on the CHASE_DB1 retinal dataset.',
       'Multi-scale feature aggregation with attention gates focusing on fine capillary structures.',
       'Preprocessing pipeline with CLAHE contrast enhancement and morphological filtering.',
       'Designed to assist ophthalmologists with early detection of diabetic retinopathy.'
@@ -545,7 +545,7 @@ async function initGitHubRepos() {
     },
     {
       name: 'optica_beta',
-      description: 'Optical eyewear store & glasses e-commerce mobile application in Flutter.',
+      description: 'Request network for optical stores, built with Flutter, GetX and Supabase.',
       language: 'Dart / Flutter',
       html_url: 'https://github.com/MFaresSlimani/optica_beta',
       stargazers_count: 0
