@@ -353,3 +353,23 @@ dialog.app.is-closing { animation: app-close .2s ease-in forwards; }
 }
 @media (max-width: 520px) { .mrz-form { grid-template-columns: 1fr; } }
 .ok { color: var(--primary); font-weight: 700; }
+
+/* projects app */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; max-width: none !important; }
+.chip {
+  min-height: 40px; padding: 0 16px; border-radius: 12px;
+  border: 1px solid var(--surface-3); background: #FFFFFF; color: var(--ink);
+  font-weight: 600; cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.projects { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; max-width: none !important; }
+.proj { background: #FFFFFF; border-radius: 22px; padding: 18px 20px; }
+.proj[hidden] { display: none; }
+.proj p { margin-bottom: 8px; }
+.proj p:last-child { margin-bottom: 0; }
+.proj h3 span[lang="ar"] { color: var(--muted); font-weight: 500; margin-left: 6px; }
+.proj--feature { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: start; }
+.proj--feature img { width: 120px; height: auto; border-radius: 16px; aspect-ratio: 9 / 19.5; object-fit: cover; object-position: top; background: var(--surface-3); }
+@media (max-width: 520px) { .proj--feature { grid-template-columns: 84px 1fr; gap: 14px; } .proj--feature img { width: 84px; } }
+.linkish { background: none; border: 0; padding: 0; color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.dock__item svg[viewBox="0 0 448 512"] { width: 52%; height: 52%; }

@@ -56,7 +56,7 @@
 
   /* ---------- app windows ---------- */
   const apps = new Map($$('dialog.app').map((d) => [d.id.replace('app-', ''), d]));
-  const legacy = { work: 'french-touch', contact: 'contact', about: 'about', experience: 'experience', research: 'research', skills: 'skills', community: 'life', education: 'about' };
+  const legacy = { work: 'projects', projects: 'projects', contact: 'contact', about: 'about', experience: 'experience', research: 'research', skills: 'skills', community: 'life', education: 'about' };
   let opener = null;
 
   const open = (id, from, push = true) => {
@@ -119,6 +119,14 @@
       fromHash();
     }
   }
+
+  /* ---------- project filters ---------- */
+  const chips = $$('#app-projects .chip');
+  chips.forEach((chip) => chip.addEventListener('click', () => {
+    const f = chip.dataset.filter;
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+    $$('#app-projects .proj').forEach((p) => { p.hidden = f !== 'all' && !p.dataset.tags.split(' ').includes(f); });
+  }));
 
   /* ---------- copy email ---------- */
   const copy = $('#copy-email');

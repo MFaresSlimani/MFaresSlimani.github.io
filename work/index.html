@@ -3,130 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Work · Mohamed Fares Slimani</title>
-  <meta name="description" content="Apps, research and side projects by Mohamed Fares Slimani: Flutter mobile apps, a Windows practice manager, and computer-vision research.">
-  <meta property="og:title" content="Work · Mohamed Fares Slimani">
-  <meta name="theme-color" content="#F4F1EA">
-  <link rel="icon" href="../favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Alfa+Slab+One&family=Manrope:wght@800&display=swap">
-  <link rel="stylesheet" href="../styles.css?v=4">
-  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <title>All projects, Fares Slimani</title>
+  <meta http-equiv="refresh" content="0; url=../#projects">
+  <link rel="canonical" href="../#projects">
+  <script>location.replace('../#projects');</script>
+  <style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#2C5E63;color:#F4FBF9;font:17px system-ui,sans-serif}a{color:#F3DFA8}</style>
 </head>
-<body class="page-work">
-
-<header class="top">
-  <a class="top__name" href=".././">Fares Slimani</a>
-  <nav class="top__nav" id="nav" aria-label="Main">
-    <a href="../#about">About</a>
-    <a href="../#experience">Experience</a>
-    <a href="../#research">Research</a>
-    <a href="../#skills">Skills</a>
-    <a href="../work/" aria-current="page" class="is-active">Work</a>
-    <a href="../#contact">Contact</a>
-  </nav>
-  <button class="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
-  </button>
-  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
-</header>
-
-<main class="wrap">
-  <header class="work-head">
-    <p class="mono muted"><a href="../">← Résumé</a></p>
-    <h1>Work</h1>
-    <p class="work-head__lede">Apps I’ve shipped on my own or for clients, plus research code. Client work from ICOSNET is private, so it isn’t listed here.</p>
-    <div class="filters" role="group" aria-label="Filter projects">
-      <button type="button" data-filter="all" aria-pressed="true">All</button>
-      <button type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
-      <button type="button" data-filter="research" aria-pressed="false">Research</button>
-      <button type="button" data-filter="desktop" aria-pressed="false">Desktop</button>
-      <button type="button" data-filter="community" aria-pressed="false">Community</button>
-    </div>
-  </header>
-
-  <ul class="projects">
-    <!-- featured: each opens its own page -->
-    <li class="proj proj--feature proj--zakat" data-tags="mobile">
-      <a href="zakat.html" class="proj__link">
-        <div class="proj__shot"><img src="../assets/shots/zakat-dashboard.webp" alt="Muslim Zakat dashboard" loading="lazy" width="540" height="1200"></div>
-        <div class="proj__body">
-          <p class="proj__meta mono">Flutter · GetX · Android</p>
-          <h2>Muslim Zakat <span lang="ar">· زكاة المسلم</span></h2>
-          <p>Arabic-first zakat tracker that follows the lunar Hijri year: a rolling window of income cycles checked against the gold nisab, with rollover so no balance is lost. Custom design system, custom-painted moon and dials, 48 tests.</p>
-          <p class="proj__cta">Read the case study →</p>
-        </div>
-      </a>
-    </li>
-    <li class="proj proj--feature proj--ft" data-tags="mobile">
-      <a href="french-touch.html" class="proj__link">
-        <div class="proj__shot"><img src="../assets/shots/ft-menu.webp" alt="French Touch menu screen" loading="lazy" width="540" height="1200"></div>
-        <div class="proj__body">
-          <p class="proj__meta mono">Flutter · Riverpod · Supabase</p>
-          <h2>French Touch</h2>
-          <p>Order taking for a fast-food restaurant in Algiers. Waiters order at the table, the cashier follows a live queue, the owner sees sales, timings and team stats. UI rebuilt from the restaurant’s own menu boards. 31 tests, CI on GitHub Actions.</p>
-          <p class="proj__cta">Read the case study →</p>
-        </div>
-      </a>
-    </li>
-    <li class="proj proj--feature proj--optica" data-tags="mobile">
-      <a href="optica.html" class="proj__link">
-        <div class="proj__shot"><img src="../assets/shots/optica-order.webp" alt="Optica order builder" loading="lazy" width="390" height="844"></div>
-        <div class="proj__body">
-          <p class="proj__meta mono">Flutter · GetX · Supabase</p>
-          <h2>Optica</h2>
-          <p>A B2B network for optical stores: build a lens order by prescription, send it to a partner store, get live alerts, print a thermal ticket. Four languages including Tamazight. 81 tests and screenshots rendered by golden tests.</p>
-          <p class="proj__cta">Read the case study →</p>
-        </div>
-      </a>
-    </li>
-
-    <!-- the rest -->
-    <li class="proj" data-tags="mobile">
-      <p class="proj__meta mono">Flutter · Supabase · GetX</p>
-      <h2>Rezervitoo</h2>
-      <p>Tourism and property rentals across Algeria’s 58 wilayas, with travel-guide recommendations, bookings and Arabic, English and French.</p>
-      <p class="proj__links"><a href="https://github.com/MFaresSlimani/Rizervitoo">Repository →</a></p>
-    </li>
-    <li class="proj" data-tags="mobile">
-      <p class="proj__meta mono">Flutter · Supabase · GetX</p>
-      <h2>Musharek <span lang="ar">· مشارك</span></h2>
-      <p>Digital savings circles (the rotating “daira” many families run), with turn-based payout tracking and Cairo Arabic typography.</p>
-      <p class="proj__links"><a href="https://github.com/MFaresSlimani/Sandooq-app">Repository →</a></p>
-    </li>
-    <li class="proj" data-tags="desktop">
-      <p class="proj__meta mono">Flutter desktop · Windows · SQLite</p>
-      <h2>orthoConnect</h2>
-      <p>Practice management for orthopedic practitioners: patient records, consultation history and appointments, running offline on Windows.</p>
-      <p class="proj__links"><a href="https://github.com/MFaresSlimani/orthoConnect">Repository →</a></p>
-    </li>
-    <li class="proj" data-tags="mobile community">
-      <p class="proj__meta mono">Flutter · QR · GDG Medea</p>
-      <h2>EZ-Check-in</h2>
-      <p>QR ticket scanning for fast attendee check-in at GDG Medea’s DevFest and I/O Extended.</p>
-      <p class="proj__links"><a href="https://github.com/MFaresSlimani/EZ-Check-in">Repository →</a></p>
-    </li>
-    <li class="proj" data-tags="research">
-      <p class="proj__meta mono">3D · WebGL · Python NLP · published</p>
-      <h2>Algerian Sign Language avatar</h2>
-      <p>A 3D avatar that signs Arabic phrases in Algerian Sign Language. Paper in Nafath (Qatar, 2024) and an open dataset, 3DZSignDB, on Zenodo.</p>
-      <p class="proj__links"><a href="https://3dasl-avatar.vercel.app/">Live demo →</a> <a href="https://doi.org/10.54455/mcn2804">Paper</a> <a href="https://doi.org/10.5281/zenodo.15020376">Dataset</a></p>
-    </li>
-    <li class="proj" data-tags="research">
-      <p class="proj__meta mono">PyTorch · FR-UNet · PhD</p>
-      <h2>Retinal vessel segmentation</h2>
-      <p>FR-UNet and Attention U-Net on fundus images, reproduced and benchmarked at 0.815 F1 on CHASE_DB1. Ongoing doctoral work at UMBB.</p>
-      <p class="proj__links"><a href="../#research">In my research →</a></p>
-    </li>
-  </ul>
-</main>
-
-<footer class="foot wrap mono">
-  <span>© 2026 Mohamed Fares Slimani</span>
-  <span><a href="https://github.com/MFaresSlimani/MFaresSlimani.github.io">Plain HTML, CSS and JS</a> · no tracking</span>
-</footer>
-
-<script src="../script.js?v=4"></script>
+<body>
+  <p>All projects now live on the home screen. <a href="../#projects">Open all projects</a></p>
 </body>
 </html>
