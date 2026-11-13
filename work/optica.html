@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Optica · Fares Slimani</title>
+  <meta name="description" content="B2B network for optical stores: lens orders by prescription, live alerts, thermal tickets. Flutter, GetX, Supabase.">
+  <meta property="og:title" content="Optica · Fares Slimani">
+  <meta property="og:description" content="B2B network for optical stores: lens orders by prescription, live alerts, thermal tickets. Flutter, GetX, Supabase.">
+  <meta name="theme-color" content="#F4F1EA">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Amiri:wght@400;700&family=Alfa+Slab+One&family=Bebas+Neue&family=Kaushan+Script&family=Manrope:wght@500;700;800&display=swap">
+  <link rel="stylesheet" href="../styles.css?v=4">
+  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body class="page-case">
+
+<header class="top">
+  <a class="top__name" href=".././">Fares Slimani</a>
+  <nav class="top__nav" id="nav" aria-label="Main">
+    <a href="../#about">About</a>
+    <a href="../#experience">Experience</a>
+    <a href="../#research">Research</a>
+    <a href="../#skills">Skills</a>
+    <a href="../work/" aria-current="page" class="is-active">Work</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+  <button class="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+  </button>
+  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+</header>
+
+<main>
+  <!-- ============ 03 OPTICA ============ -->
+  <section class="case case--optica" id="optica" aria-labelledby="optica-title">
+    <div class="wrap">
+      <header class="case__head">
+        <p class="case__n mono"><a href="./">← All work</a></p>
+        <h2 class="case__title" id="optica-title">optica</h2>
+        <p class="case__lede">
+          Optical stores constantly order lenses from each other.
+          Optica turns that into a network: browse partner stores, build an order by prescription,
+          and the supplier ticks off what it can deliver and prints a ticket.
+        </p>
+        <dl class="facts mono">
+          <div><dt>Role</dt><dd>Design, code, backend, CI</dd></div>
+          <div><dt>Stack</dt><dd>GetX · Supabase · Hive · ESC/POS</dd></div>
+          <div><dt>Languages</dt><dd>FR · EN · AR · Tamazight</dd></div>
+          <div><dt>Quality</dt><dd>81 tests · 14 golden screens</dd></div>
+        </dl>
+        <p class="case__links">
+          <a class="btn" href="https://github.com/MFaresSlimani/optica_beta">Source on GitHub</a>
+          <a class="link" href="https://github.com/MFaresSlimani/optica_beta/releases/latest">Latest release →</a>
+        </p>
+      </header>
+
+      <div class="scrolly">
+        <div class="phone" aria-hidden="true"><div class="phone__screen"></div></div>
+        <div class="steps">
+          <article class="step">
+            <img class="step__shot" src="../assets/shots/optica-stores.webp" alt="Directory of partner optical stores with search" loading="lazy" width="390" height="844">
+            <p class="step__n mono">Directory</p>
+            <h3>Find a partner store by name or city</h3>
+            <p>Cover photos, a branded fallback when a store has none, and live alerts through Supabase Realtime when a request arrives or is completed.</p>
+          </article>
+          <article class="step">
+            <img class="step__shot" src="../assets/shots/optica-order.webp" alt="Order builder with lens type chips and sphere and cylinder wheels" loading="lazy" width="390" height="844">
+            <p class="step__n mono">Order builder</p>
+            <h3>Prescriptions are integers, not floats</h3>
+            <p>Powers are stored as quarter-steps, so −2.25 is exactly −9 × 0.25. Identical lenses merge into one line, and the unsent order is kept per store on the device.</p>
+          </article>
+          <article class="step">
+            <img class="step__shot" src="../assets/shots/optica-print_ticket.webp" alt="Thermal ticket preview" loading="lazy" width="390" height="844">
+            <p class="step__n mono">Thermal ticket</p>
+            <h3>The preview and the print share one model</h3>
+            <p>Tickets go out over USB or Bluetooth as ESC/POS. The on-screen preview is drawn from the same data, so what you see is what the printer gets.</p>
+          </article>
+          <article class="step">
+            <img class="step__shot" src="../assets/shots/optica-requests_arabic.webp" alt="Requests inbox in Arabic, right to left" loading="lazy" width="390" height="844">
+            <p class="step__n mono">Proof, not promises</p>
+            <h3>Screenshots rendered by tests</h3>
+            <p>Every Optica screen on this page comes from golden tests over fixture data, re-rendered in CI on each push. Strict analysis fails the build on any info-level issue; a test fails if a translation key is missing in any of the four languages.</p>
+          </article>
+        </div>
+      </div>
+
+      <figure class="demo demo--optica">
+        <figcaption>
+          <p class="mono">Try it · scroll the wheels, add a lens twice</p>
+          <h3>Exact powers, merged lines</h3>
+        </figcaption>
+        <div class="odemo">
+          <div class="odemo__build">
+            <div class="chips" id="lens-types" role="radiogroup" aria-label="Lens type">
+              <button role="radio" aria-checked="true">HMC 1.56</button>
+              <button role="radio">Blue Block 1.56</button>
+              <button role="radio">HMC 1.61</button>
+            </div>
+            <div class="wheels">
+              <div class="wheel"><span class="mono">Sphere</span><ul id="w-sph" tabindex="0" aria-label="Sphere"></ul></div>
+              <div class="wheel"><span class="mono">Cylinder</span><ul id="w-cyl" tabindex="0" aria-label="Cylinder"></ul></div>
+            </div>
+            <p class="odemo__enc mono" id="enc"></p>
+            <button class="o-btn" id="add-lens" type="button">+ Add to order</button>
+          </div>
+          <div class="odemo__order">
+            <p class="mono">Order items</p>
+            <ul id="lines"><li class="empty">Nothing yet.</li></ul>
+            <p class="odemo__sum mono" id="lines-sum">0 lenses · 0 lines</p>
+          </div>
+        </div>
+        <p class="demo__fine">In floating point, 0.1 + 0.2 is <span class="mono" id="float-proof"></span>. Optical prescriptions can’t afford that.</p>
+      </figure>
+    </div>
+  </section>
+
+  <nav class="next wrap" aria-label="More work">
+    <a href="./">← All work</a>
+    <a href="zakat.html">Next: Muslim Zakat →</a>
+  </nav>
+</main>
+
+<footer class="foot wrap mono">
+  <span>© 2026 Mohamed Fares Slimani</span>
+  <span><a href="https://github.com/MFaresSlimani/MFaresSlimani.github.io">Plain HTML, CSS and JS</a> · no tracking</span>
+</footer>
+
+<script src="../script.js?v=4"></script>
+<script src="../demos.js?v=4"></script>
+</body>
+</html>

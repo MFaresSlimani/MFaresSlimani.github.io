@@ -1,853 +1,200 @@
-/**
- * Mohamed FARES SLIMANI - PORTFOLIO INTERACTION ENGINE
- * Features:
- * - Dynamic Neural Constellation Canvas
- * - Typewriter Animation with authentic roles
- * - Category Filtering (Skills & Projects)
- * - Interactive Project Details Modal
- * - Live GitHub API Synchronization
- * - Copy to Clipboard Toast (Email & Phone)
- * - Scroll Spy & Mobile Navigation
- */
+(() => {
+  'use strict';
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  };
 
-// SVG Brand Icon Definitions for GitHub and LinkedIn (not bundled in Lucide core)
-const BRAND_ICONS = {
-  github: (size = 20) => `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>`,
-  linkedin: (size = 20) => `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>`
-};
-
-function refreshIcons(container = document) {
-  if (window.lucide) {
-    lucide.createIcons();
-  }
-  container.querySelectorAll('[data-lucide="github"]').forEach((el) => {
-    const isSmall = el.style.width === '16px' || el.closest('.project-link') || el.closest('.btn');
-    el.outerHTML = BRAND_ICONS.github(isSmall ? 16 : 20);
+  /* ---------- theme ---------- */
+  const isDark = () => {
+    const t = document.documentElement.dataset.theme;
+    return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  };
+  const syncThemeColor = () => {
+    const m = $('meta[name="theme-color"]');
+    if (m) m.content = isDark() ? '#131210' : '#F4F1EA';
+  };
+  const themeBtn = $('.theme');
+  if (themeBtn) themeBtn.addEventListener('click', () => {
+    const next = isDark() ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    store.set('theme', next);
+    syncThemeColor();
+    dispatchEvent(new Event('themechange'));
   });
-  container.querySelectorAll('[data-lucide="linkedin"]').forEach((el) => {
-    const isSmall = el.style.width === '16px' || el.closest('.btn');
-    el.outerHTML = BRAND_ICONS.linkedin(isSmall ? 16 : 20);
-  });
-}
+  syncThemeColor();
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Icons
-  refreshIcons();
+  /* ---------- header ---------- */
+  const top = $('.top');
+  const onScroll = () => top && top.classList.toggle('is-scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  // Update current copyright year
-  const yearEl = document.getElementById('current-year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-
-  // Initialize all interactive modules
-  initCanvasAnimation();
-  initTypewriter();
-  initNavigation();
-  initSkillsFilter();
-  initProjectsFilter();
-  initProjectModal();
-  initGitHubRepos();
-  initContactForm();
-  initToast();
-  initEasterEggs();
-});
-
-/* ==========================================================================
-   1. Neural Constellation Canvas Background
-   ========================================================================== */
-function initCanvasAnimation() {
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  let width = (canvas.width = window.innerWidth);
-  let height = (canvas.height = window.innerHeight);
-
-  window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
-
-  const mouse = { x: null, y: null, radius: 140 };
-
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.x;
-    mouse.y = e.y;
-  });
-
-  window.addEventListener('mouseout', () => {
-    mouse.x = null;
-    mouse.y = null;
-  });
-
-  const particleCount = Math.min(Math.floor((width * height) / 16000), 75);
-  const particles = [];
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.7;
-      this.vy = (Math.random() - 0.5) * 0.7;
-      this.radius = Math.random() * 2 + 1;
-      this.color = Math.random() > 0.5 ? 'rgba(99, 102, 241, ' : 'rgba(6, 182, 212, ';
-      this.alpha = Math.random() * 0.5 + 0.2;
-    }
-
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-
-      if (this.x < 0 || this.x > width) this.vx *= -1;
-      if (this.y < 0 || this.y > height) this.vy *= -1;
-
-      // Mouse interaction
-      if (mouse.x !== null && mouse.y !== null) {
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < mouse.radius) {
-          const force = (mouse.radius - dist) / mouse.radius;
-          const dirX = (dx / dist) * force * 1.5;
-          const dirY = (dy / dist) * force * 1.5;
-          this.x -= dirX;
-          this.y -= dirY;
-        }
-      }
-    }
-
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = this.color + this.alpha + ')';
-      ctx.fill();
-    }
-  }
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < particles.length; i++) {
-      particles[i].update();
-      particles[i].draw();
-
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < 120) {
-          const opacity = (1 - dist / 120) * 0.25;
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
-          ctx.lineWidth = 1;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-}
-
-/* ==========================================================================
-   2. Typewriter Effect
-   ========================================================================== */
-function initTypewriter() {
-  const el = document.getElementById('typewriter-text');
-  if (!el) return;
-
-  const roles = [
-    'Senior Mobile Engineer @ ICOSNET',
-    'PhD Researcher in AI & Vision',
-    'Flutter & Clean Architecture Craftsman',
-    'University Adjunct Instructor (OS & AI)',
-    'NVIDIA Certified Deep Learning Engineer'
-  ];
-
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 80;
-
-  function type() {
-    const currentRole = roles[roleIndex];
-
-    if (isDeleting) {
-      el.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
-      typingSpeed = 35;
-    } else {
-      el.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
-      typingSpeed = 80;
-    }
-
-    if (!isDeleting && charIndex === currentRole.length) {
-      typingSpeed = 2200; // Pause at end of text
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      typingSpeed = 500;
-    }
-
-    setTimeout(type, typingSpeed);
-  }
-
-  type();
-}
-
-/* ==========================================================================
-   3. Header, ScrollSpy & Mobile Navigation
-   ========================================================================== */
-function initNavigation() {
-  const header = document.getElementById('header');
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const mobileDrawer = document.getElementById('mobile-drawer');
-  const closeDrawer = document.getElementById('close-drawer');
-  const drawerLinks = document.querySelectorAll('.drawer-link');
-  const backToTop = document.getElementById('back-to-top');
-
-  // Sticky Header & Back to Top
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY;
-
-    if (scrollPos > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-
-    if (scrollPos > 400) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
-    }
-
-    // ScrollSpy
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => {
-      const top = section.offsetTop - 120;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-      const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
-
-      if (scrollPos >= top && scrollPos < top + height) {
-        document.querySelectorAll('.nav-link').forEach((l) => l.classList.remove('active'));
-        if (navLink) navLink.classList.add('active');
-      }
+  const menuBtn = $('.menu-btn');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      const open = top.classList.toggle('is-open');
+      menuBtn.setAttribute('aria-expanded', String(open));
     });
-  });
-
-  // Mobile Drawer Toggle
-  if (mobileToggle && mobileDrawer) {
-    mobileToggle.addEventListener('click', () => {
-      mobileDrawer.classList.add('open');
-    });
+    $$('.top__nav a').forEach((a) => a.addEventListener('click', () => {
+      top.classList.remove('is-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
   }
 
-  if (closeDrawer && mobileDrawer) {
-    closeDrawer.addEventListener('click', () => {
-      mobileDrawer.classList.remove('open');
-    });
-  }
-
-  drawerLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      if (mobileDrawer) mobileDrawer.classList.remove('open');
-    });
-  });
-
-  // Back to Top Click
-  if (backToTop) {
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-}
-
-/* ==========================================================================
-   4. Skills Category Filtering
-   ========================================================================== */
-function initSkillsFilter() {
-  const tabs = document.querySelectorAll('#skills-filter-tabs .filter-tab');
-  const skillCards = document.querySelectorAll('#skills-grid .skill-card');
-
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      tabs.forEach((t) => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const category = tab.getAttribute('data-category');
-
-      skillCards.forEach((card) => {
-        const cardCat = card.getAttribute('data-category');
-        if (category === 'all' || cardCat === category) {
-          card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.4s ease forwards';
-        } else {
-          card.style.display = 'none';
-        }
+  // highlight the section in view (home page anchors only)
+  const anchorLinks = $$('.top__nav a[href^="#"]');
+  if (anchorLinks.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        anchorLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id));
       });
-    });
-  });
-}
-
-/* ==========================================================================
-   5. Projects Filtering
-   ========================================================================== */
-function initProjectsFilter() {
-  const filterBtns = document.querySelectorAll('.proj-filter');
-  const projectCards = document.querySelectorAll('#projects-grid .project-card');
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-
-      projectCards.forEach((card) => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-}
-
-/* ==========================================================================
-   6. Project Details Modal
-   ========================================================================== */
-const projectDetailsData = {
-  orthoConnect: {
-    title: 'orthoConnect — Practice Management System',
-    category: 'Flutter Windows Desktop Application',
-    repoUrl: 'https://github.com/MFaresSlimani/orthoConnect',
-    overview:
-      'A dedicated Windows desktop clinical practice management application built with Flutter Desktop for orthopedic doctors and clinics to digitalize patient consultations, diagnostic records, and appointment schedules.',
-    keyFeatures: [
-      'Engineered for Windows Desktop with Flutter, featuring custom desktop window chrome (bitsdojo_window).',
-      'High-performance offline local database management powered by SQLite (sqflite_common_ffi).',
-      'Clinical consultation tracking, prescription archiving, and patient history logging.',
-      'Document and image attachment handling using native file pickers and path providers.',
-      'Clean reactive state management with GetX.'
-    ],
-    techStack: ['Flutter Desktop', 'Dart', 'sqflite_common_ffi', 'bitsdojo_window', 'GetX', 'File Picker', 'Windows FFI']
-  },
-  Rizervitoo: {
-    title: 'Rezervitoo — Algeria Tourism & Property Rental Platform',
-    category: 'Mobile Application (Flutter)',
-    repoUrl: 'https://github.com/MFaresSlimani/Rizervitoo',
-    overview:
-      'A feature-rich mobile tourism and property rental application covering 58 wilayas in Algeria, connecting travelers with holiday rentals, agencies, and local landmark guides.',
-    keyFeatures: [
-      'Explore properties, apartments, and villas across all Algerian wilayas with interactive maps.',
-      'Supabase backend integration providing secure authentication, PostgreSQL database, and media storage.',
-      'Agency directory and curated wilaya travel guides highlighting top regional attractions.',
-      'Multilingual interface with full support for Arabic, English, and French.',
-      'Modern glassmorphism UI with Lottie micro-animations, photo viewing, and image compression.',
-      'Smooth state management and offline persistence with GetX and GetStorage.'
-    ],
-    techStack: ['Flutter', 'Dart', 'Supabase (PostgreSQL & Auth)', 'GetX', 'Lottie', 'Glassmorphism', 'PhotoView', 'Multilingual (AR/EN/FR)']
-  },
-  'EZ-Check-in': {
-    title: 'EZ-Check-in — Event Entry & Fast QR Scanner (GDG Medea)',
-    category: 'Event Tech Mobile Application (Flutter)',
-    repoUrl: 'https://github.com/MFaresSlimani/EZ-Check-in',
-    overview:
-      'Engineered specifically for Google Developer Group (GDG) Medea tech conferences (DevFest, I/O Extended) to eliminate registration queues through sub-second camera QR verification.',
-    keyFeatures: [
-      'Sub-second QR badge scanner with instant visual status feedback and camera flash control.',
-      'Optimized camera feed pipeline for rapid consecutive attendee scanning.',
-      'Designed for GDG community volunteers to manage conference admissions with zero friction.',
-      'Offline caching capabilities allowing uninterrupted check-in during network instability.'
-    ],
-    techStack: ['Flutter', 'Dart', 'qr_code_scanner', 'Camera SDK', 'Google Fonts', 'GDG Medea']
-  },
-  'Sandooq-app': {
-    title: 'Musharek (مشارك) / Sandooq — Rotating Savings Circles',
-    category: 'Fintech Mobile Application (Flutter)',
-    repoUrl: 'https://github.com/MFaresSlimani/Sandooq-app',
-    overview:
-      'A modern fintech mobile application that digitalizes traditional community rotating savings and credit associations ("دوائر" / ROSCA), empowering groups to save securely and transparently.',
-    keyFeatures: [
-      'Create and explore community savings circles ("دوائر") with customizable contribution rounds.',
-      'Automated payout cycle tracking and turn-based member fund distribution.',
-      'Supabase backend integration for real-time circle updates, secure authentication, and member data.',
-      'Custom Arabic typography (Cairo Google Font) with dark and light mode themes.',
-      'Reactive state management and modular architecture built with GetX.'
-    ],
-    techStack: ['Flutter', 'Dart', 'GetX', 'Supabase', 'Cairo Typography', 'Material 3', 'Fintech Architecture']
-  },
-  optica_beta: {
-    title: 'Optica: Request Network for Optical Stores',
-    category: 'B2B Mobile Application (Flutter + Supabase)',
-    repoUrl: 'https://github.com/MFaresSlimani/optica_beta',
-    overview:
-      'A Flutter app that lets optical stores send each other lens and frame requests, track what was fulfilled, and print tickets, backed by Supabase with Row Level Security.',
-    keyFeatures: [
-      'Store-owner accounts with store profiles and image galleries (Supabase Auth + Storage).',
-      'Request inbox/outbox with per-item tracking of fulfilled and remaining glasses.',
-      'USB thermal ticket printing with a preview screen.',
-      '3-layer GetX architecture (core/data/presentation), full i18n, named routes only.'
-    ],
-    techStack: ['Flutter', 'Dart', 'GetX', 'Supabase', 'PostgreSQL RLS', 'Hive', 'Thermal Printing']
-  },
-  'algerianSignLanguage-avatar': {
-    title: 'Algerian Sign Language 3D Avatar System',
-    category: 'AI & Multimodal 3D Vision',
-    repoUrl: 'https://github.com/MFaresSlimani/algerianSignLanguage-avatar',
-    liveUrl: 'https://3dasl-avatar.vercel.app/',
-    overview:
-      'A pioneering assistive technology project synthesizing Algerian Sign Language (ASL) through a calibrated 3D animated human avatar, backed by the published 3DZSignDB dataset.',
-    keyFeatures: [
-      '3D kinematic keyframe and skeletal motion sequence synthesis for signs.',
-      'Live interactive web deployment on Vercel (3dasl-avatar.vercel.app).',
-      'Accompanying 3DZSignDB open science dataset on Zenodo (DOI: 10.5281/zenodo.15020376).',
-      'Peer-reviewed and presented at Nafath Majlis, Qatar (DOI: 10.54455/mcn2804).',
-      'Aimed at empowering hearing-impaired communities through automated gesture translation.'
-    ],
-    techStack: ['Three.js', 'WebGL', '3D Kinematics', 'Python NLP', 'Zenodo Dataset', 'Nafath Majlis']
-  },
-  'Retinal-AI': {
-    title: 'Retinal Vessel Deep Learning Segmentation',
-    category: 'PhD Doctoral Research (Boumerdès University)',
-    repoUrl: 'https://github.com/MFaresSlimani',
-    overview:
-      'Advanced biomedical image processing pipeline applying deep convolutional networks (FR-UNet and Attention U-Net) to achieve high-accuracy micro-vessel segmentation in retinal fundus photography.',
-    keyFeatures: [
-      'Reproduced and benchmarked FR-UNet at 0.815 F1 on the CHASE_DB1 retinal dataset.',
-      'Multi-scale feature aggregation with attention gates focusing on fine capillary structures.',
-      'Preprocessing pipeline with CLAHE contrast enhancement and morphological filtering.',
-      'Designed to assist ophthalmologists with early detection of diabetic retinopathy.'
-    ],
-    techStack: ['PyTorch', 'TorchVision', 'FR-UNet', 'Attention U-Net', 'OpenCV', 'CHASE_DB1', 'CUDA']
-  }
-};
-
-function initProjectModal() {
-  const modal = document.getElementById('project-modal');
-  const modalBody = document.getElementById('modal-body-content');
-  const closeBtn = document.getElementById('modal-close-btn');
-  const detailButtons = document.querySelectorAll('.project-detail-btn');
-
-  if (!modal || !modalBody) return;
-
-  detailButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const projKey = btn.getAttribute('data-project');
-      const data = projectDetailsData[projKey];
-
-      if (!data) return;
-
-      modalBody.innerHTML = `
-        <div class="modal-header-section" style="margin-bottom: 1.5rem;">
-          <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-cyan); text-transform: uppercase;">${data.category}</span>
-          <h2 style="font-family: var(--font-heading); font-size: 1.6rem; color: #fff; margin-top: 0.3rem;">${data.title}</h2>
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">${data.overview}</p>
-        
-        <h4 style="font-family: var(--font-heading); color: #fff; font-size: 1.1rem; margin-bottom: 0.8rem;">Key Highlights</h4>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem;">
-          ${data.keyFeatures.map((f) => `<li style="display: flex; gap: 0.6rem; font-size: 0.9rem; color: var(--text-main);"><span style="color: var(--accent-cyan); font-weight: bold;">&bull;</span> <span>${f}</span></li>`).join('')}
-        </ul>
-
-        <h4 style="font-family: var(--font-heading); color: #fff; font-size: 1.1rem; margin-bottom: 0.8rem;">Technologies & Architecture</h4>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem;">
-          ${data.techStack.map((t) => `<span style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-subtle); padding: 0.25rem 0.7rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">${t}</span>`).join('')}
-        </div>
-
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          ${data.liveUrl ? `
-            <a href="${data.liveUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-              <i data-lucide="globe" style="width:16px;height:16px;"></i> Live Demo
-            </a>
-          ` : ''}
-          ${data.repoUrl && data.repoUrl !== 'https://github.com/MFaresSlimani' ? `
-            <a href="${data.repoUrl}" target="_blank" rel="noopener" class="btn ${data.liveUrl ? 'btn-secondary' : 'btn-primary'} btn-sm">
-              <i data-lucide="github" style="width:16px;height:16px;"></i> View Repository
-            </a>
-          ` : `
-            <a href="${data.repoUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-              <i data-lucide="github" style="width:16px;height:16px;"></i> GitHub Profile
-            </a>
-          `}
-        </div>
-      `;
-
-      refreshIcons(modalBody);
-      modal.classList.add('active');
-    });
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    anchorLinks.forEach((a) => { const el = $(a.getAttribute('href')); if (el) io.observe(el); });
   }
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('active');
-    }
-  });
-}
+  /* ---------- MRZ id card (ICAO 9303, TD3) ---------- */
+  const mrzEl = $('#mrz');
+  if (mrzEl) {
+    const W = [7, 3, 1];
+    const val = (c) => (c === '<' ? 0 : /\d/.test(c) ? +c : c.charCodeAt(0) - 55);
+    const check = (s) => String([...s].reduce((sum, c, i) => sum + val(c) * W[i % 3], 0) % 10);
+    const pad = (s, n) => (s + '<'.repeat(n)).slice(0, n);
 
-/* ==========================================================================
-   7. Live GitHub API Repositories
-   ========================================================================== */
-async function initGitHubRepos() {
-  const container = document.getElementById('github-repos-grid');
-  if (!container) return;
+    const surname = 'SLIMANI', given = 'MOHAMED<FARES';
+    const doc = pad('TSUKI', 9), nat = 'DZA', dob = '<<<<<<', sex = 'M', exp = '<<<<<<';
+    const opt = pad('FLUTTER<PHD<AI', 14);
+    const l1 = pad('P<' + nat + surname + '<<' + given, 44);
+    const cDoc = check(doc), cDob = check(dob), cExp = check(exp), cOpt = check(opt);
+    const composite = check(doc + cDoc + dob + cDob + exp + cExp + opt + cOpt);
+    const l2 = doc + cDoc + nat + dob + cDob + sex + exp + cExp + opt + cOpt + composite;
 
-  const fallbackRepos = [
-    {
-      name: 'Rizervitoo',
-      description: 'Tourism and rental properties app in Algeria with Supabase & GetX.',
-      language: 'Dart / Flutter',
-      html_url: 'https://github.com/MFaresSlimani/Rizervitoo',
-      stargazers_count: 0
-    },
-    {
-      name: 'Sandooq-app',
-      description: 'Fintech mobile app for rotating community savings circles ("دوائر").',
-      language: 'Dart / Flutter',
-      html_url: 'https://github.com/MFaresSlimani/Sandooq-app',
-      stargazers_count: 0
-    },
-    {
-      name: 'orthoConnect',
-      description: 'Windows practice management application built with Flutter Desktop & SQLite.',
-      language: 'Dart / Flutter Desktop',
-      html_url: 'https://github.com/MFaresSlimani/orthoConnect',
-      stargazers_count: 0
-    },
-    {
-      name: 'EZ-Check-in',
-      description: 'High-speed QR code ticket validation app built for GDG Medea conferences.',
-      language: 'Dart / Flutter',
-      html_url: 'https://github.com/MFaresSlimani/EZ-Check-in',
-      stargazers_count: 1
-    },
-    {
-      name: 'optica_beta',
-      description: 'Request network for optical stores, built with Flutter, GetX and Supabase.',
-      language: 'Dart / Flutter',
-      html_url: 'https://github.com/MFaresSlimani/optica_beta',
-      stargazers_count: 0
-    },
-    {
-      name: 'algerianSignLanguage-avatar',
-      description: '3D animated avatar translating text into Algerian Sign Language gestures.',
-      language: 'Three.js / Python',
-      html_url: 'https://github.com/MFaresSlimani/algerianSignLanguage-avatar',
-      stargazers_count: 0
-    }
-  ];
+    const lineEls = $$('.mrz__line', mrzEl);
+    lineEls[0].textContent = l1;
+    lineEls[1].textContent = l2;
 
-  const ignoredPatterns = [
-    /faresslimani/i,
-    /mfares/i,
-    /fares/i,
-    /gitlearning/i,
-    /portfolio/i,
-    /\.github\.io/i
-  ];
+    // parse the lines back, the way a scanner would
+    const parse = (a, b) => {
+      const names = a.slice(5).split('<<');
+      const ok = (field, digit) => check(field) === digit;
+      return [
+        ['Type', a[0] === 'P' ? 'Passport (TD3)' : a[0]],
+        ['Surname', names[0].replace(/</g, ' ').trim()],
+        ['Given names', (names[1] || '').replace(/</g, ' ').trim()],
+        ['Nationality', b.slice(10, 13)],
+        ['Document no.', b.slice(0, 9).replace(/</g, ''), ok(b.slice(0, 9), b[9])],
+        ['Date of birth', 'not on the internet', ok(b.slice(13, 19), b[19])],
+        ['Expiry', 'open-ended', ok(b.slice(21, 27), b[27])],
+        ['Personal data', b.slice(28, 42).replace(/</g, ' ').trim(), ok(b.slice(28, 42), b[42])],
+        ['Composite', 'check digit ' + b[43], check(b.slice(0, 10) + b.slice(13, 20) + b.slice(21, 43)) === b[43]],
+      ];
+    };
 
-  try {
-    const response = await fetch('https://api.github.com/users/MFaresSlimani/repos?sort=updated&per_page=20');
-    if (!response.ok) throw new Error('Network error');
-    const rawRepos = await response.json();
-
-    if (rawRepos && Array.isArray(rawRepos) && rawRepos.length > 0) {
-      const validRepos = rawRepos.filter((repo) => {
-        const name = (repo.name || '').toLowerCase();
-        return !ignoredPatterns.some((pattern) => pattern.test(name));
-      });
-
-      if (validRepos.length > 0) {
-        renderRepos(validRepos, container);
-        return;
-      }
-    }
-    renderRepos(fallbackRepos, container);
-  } catch (err) {
-    renderRepos(fallbackRepos, container);
-  }
-}
-
-function renderRepos(repos, container) {
-  container.innerHTML = repos
-    .slice(0, 6)
-    .map(
-      (repo) => `
-      <a href="${repo.html_url}" target="_blank" rel="noopener" class="gh-repo-card">
-        <div>
-          <div class="gh-repo-header">
-            <i data-lucide="git-fork"></i>
-            <span class="gh-repo-name">${repo.name}</span>
-          </div>
-          <p class="gh-repo-desc">${repo.description || 'Public repository by @MFaresSlimani'}</p>
-        </div>
-        <div class="gh-repo-meta">
-          <span><i data-lucide="code" style="width:12px;height:12px;display:inline;margin-right:3px;"></i>${repo.language || 'Code'}</span>
-          <span><i data-lucide="star" style="width:12px;height:12px;display:inline;margin-right:3px;"></i>${repo.stargazers_count || 0}</span>
-        </div>
-      </a>
-    `
-    )
-    .join('');
-
-  refreshIcons(container);
-}
-
-/* ==========================================================================
-   8. Contact Form & Clipboard Action
-   ========================================================================== */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('form-submit-btn');
-  if (!form || !submitBtn) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('form-name').value.trim();
-    const email = document.getElementById('form-email').value.trim();
-    const subject = document.getElementById('form-subject').value.trim();
-    const message = document.getElementById('form-message').value.trim();
-
-    if (!name || !email || !message) {
-      showToast('Please fill in all required fields.');
-      return;
-    }
-
-    const originalBtnHTML = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span class="btn-spinner"></span> <span>Sending...</span>`;
-
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/1cc6a7dbb378c25e778a17889f32705b', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          _subject: `[Portfolio DM] ${subject || 'New Message'} - from ${name}`,
-          message: message,
-          _template: 'table'
-        })
-      });
-
-      const result = await response.json();
-
-      if (response.ok || result.success === 'true' || result.success === true) {
-        showToast('Message sent successfully! I will reply soon.');
-        form.reset();
-      } else {
-        throw new Error(result.message || 'Submission failed');
-      }
-    } catch (err) {
-      // Fallback: If network block occurs, offer fallback
-      showToast('Could not send automatically. Opening email client...');
-      const mailtoUrl = `mailto:faresslimani0@gmail.com?subject=${encodeURIComponent(
-        `[Portfolio Contact] ${subject} - from ${name}`
-      )}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-      window.location.href = mailtoUrl;
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnHTML;
-      refreshIcons(submitBtn);
-    }
-  });
-}
-
-function initToast() {
-  const copyHeroBtn = document.getElementById('hero-copy-email-btn');
-  const copyActionBtn = document.getElementById('copy-email-action');
-  const copyPhoneBtn = document.getElementById('copy-phone-action');
-
-  function copyEmail() {
-    const email = 'faresslimani0@gmail.com';
-    navigator.clipboard
-      .writeText(email)
-      .then(() => {
-        showToast('Email copied to clipboard: faresslimani0@gmail.com');
-      })
-      .catch(() => {
-        showToast('faresslimani0@gmail.com');
-      });
-  }
-
-  function copyPhone() {
-    const phone = '+213 558 139 901';
-    navigator.clipboard
-      .writeText(phone)
-      .then(() => {
-        showToast('Phone number copied: +213 558 139 901');
-      })
-      .catch(() => {
-        showToast('+213 558 139 901');
-      });
-  }
-
-  if (copyHeroBtn) copyHeroBtn.addEventListener('click', copyEmail);
-  if (copyActionBtn) copyActionBtn.addEventListener('click', copyEmail);
-  if (copyPhoneBtn) copyPhoneBtn.addEventListener('click', copyPhone);
-}
-
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  const toastMsg = document.getElementById('toast-message');
-  if (!toast || !toastMsg) return;
-
-  toastMsg.textContent = message;
-  toast.classList.add('show');
-
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 3500);
-}
-
-/* ==========================================================================
-   9. Easter Eggs (Interactive Kitten Tsuki & Konami Code)
-   ========================================================================== */
-function initEasterEggs() {
-  // --- A. Interactive Peeking Kitten (Tsuki) ---
-  const kitten = document.getElementById('kitten-easter-egg');
-  const bubble = document.getElementById('kitten-bubble');
-
-  const meowPhrases = [
-    'Meow! 🐾',
-    'Purrr...',
-    'You found Tsuki! 🌙',
-    'Need a Senior Mobile Engineer?',
-    'Building cool things with Flutter & AI',
-    '100% bug-free (I ate all the bugs)',
-    'Sehr gut!',
-    '58 Wilayas of Algeria explored!',
-    'Keep petting me!',
-    'Flutter is awesome!'
-  ];
-
-  let petCount = 0;
-  let phraseIdx = 0;
-  const particleIcons = ['🐾', '✨', '❤️', '🌙', '⚡', '🐱', '💖'];
-
-  if (kitten && bubble) {
-    kitten.addEventListener('click', (e) => {
-      petCount++;
-      phraseIdx = (phraseIdx + 1) % meowPhrases.length;
-
-      // Update speech bubble
-      bubble.textContent = meowPhrases[phraseIdx];
-      bubble.classList.add('show');
-
-      // Spawn floating click particle
-      const rect = kitten.getBoundingClientRect();
-      const particle = document.createElement('div');
-      particle.className = 'kitten-particle';
-      particle.textContent = particleIcons[Math.floor(Math.random() * particleIcons.length)];
-      particle.style.left = `${rect.left + rect.width / 2 + (Math.random() * 30 - 15)}px`;
-      particle.style.top = `${rect.top - 10}px`;
-      document.body.appendChild(particle);
-
+    const scanBtn = $('#scan');
+    const out = $('#mrz-out');
+    const card = $('.idcard');
+    scanBtn.addEventListener('click', () => {
+      if (card.classList.contains('is-scanning')) return;
+      out.innerHTML = '';
+      card.classList.remove('is-scanned');
+      card.classList.add('is-scanning');
+      scanBtn.textContent = 'Reading MRZ…';
+      const rows = parse(lineEls[0].textContent, lineEls[1].textContent);
+      const delay = reduceMotion ? 0 : 900;
       setTimeout(() => {
-        particle.remove();
-      }, 1200);
-
-      // Secret Petting Achievement
-      if (petCount === 7) {
-        bubble.textContent = '🏆 Achievement Unlocked: Cat Whisperer! 🐾';
-        showToast('🐱 You unlocked the Cat Whisperer achievement!');
-      }
-
-      // Hide bubble after 2.5s if not hovered
-      setTimeout(() => {
-        if (!kitten.matches(':hover')) {
-          bubble.classList.remove('show');
-        }
-      }, 2500);
+        card.classList.remove('is-scanning');
+        card.classList.add('is-scanned');
+        rows.forEach(([k, v, ok], i) => {
+          const dt = document.createElement('dt'); dt.textContent = k;
+          const dd = document.createElement('dd'); dd.textContent = v;
+          if (ok !== undefined) {
+            const s = document.createElement('span');
+            s.className = ok ? 'ok' : 'bad';
+            s.textContent = ok ? '✓' : '✗';
+            s.title = ok ? 'Check digit valid' : 'Check digit invalid';
+            dd.append(' ', s);
+          }
+          dt.style.animationDelay = dd.style.animationDelay = (reduceMotion ? 0 : i * 60) + 'ms';
+          out.append(dt, dd);
+        });
+        scanBtn.textContent = 'Scan again';
+      }, delay);
     });
   }
 
-  // --- B. Konami Code (↑ ↑ ↓ ↓ ← → ← → B A) ---
-  const konamiSequence = [
-    'ArrowUp',
-    'ArrowUp',
-    'ArrowDown',
-    'ArrowDown',
-    'ArrowLeft',
-    'ArrowRight',
-    'ArrowLeft',
-    'ArrowRight',
-    'KeyB',
-    'KeyA'
-  ];
-  let konamiIndex = 0;
-
-  window.addEventListener('keydown', (e) => {
-    const code = e.code || e.key;
-    const targetKey = konamiSequence[konamiIndex];
-
-    if (code === targetKey || e.key.toLowerCase() === targetKey.replace('Key', '').toLowerCase()) {
-      konamiIndex++;
-      if (konamiIndex === konamiSequence.length) {
-        konamiIndex = 0;
-        activatePartyMode();
-      }
-    } else {
-      konamiIndex = 0;
-    }
-  });
-
-  function activatePartyMode() {
-    document.body.classList.add('party-mode');
-    showToast('🎮 Konami Code Activated: Cyber Neon Mode! 🚀');
-
-    if (bubble) {
-      bubble.textContent = '⚡ PARTY TIME! ⚡';
-      bubble.classList.add('show');
-    }
-
-    setTimeout(() => {
-      document.body.classList.remove('party-mode');
-    }, 10000);
+  /* ---------- draggable stickers ---------- */
+  const stickers = $$('.sticker');
+  if (stickers.length && matchMedia('(pointer: fine)').matches) {
+    let z = 10;
+    stickers.forEach((el) => {
+      let sx = 0, sy = 0, ox = 0, oy = 0, moved = false;
+      const rot = parseFloat(el.dataset.rot || 0);
+      el.style.setProperty('--r', rot + 'deg');
+      el.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        el.setPointerCapture(e.pointerId);
+        el.classList.add('is-drag');
+        el.style.zIndex = ++z;
+        sx = e.clientX; sy = e.clientY;
+        ox = parseFloat(el.dataset.x || 0); oy = parseFloat(el.dataset.y || 0);
+        moved = false;
+      });
+      el.addEventListener('pointermove', (e) => {
+        if (!el.hasPointerCapture(e.pointerId)) return;
+        const dx = e.clientX - sx, dy = e.clientY - sy;
+        if (Math.abs(dx) + Math.abs(dy) > 3) moved = true;
+        el.dataset.x = ox + dx; el.dataset.y = oy + dy;
+        el.style.translate = `${ox + dx}px ${oy + dy}px`;
+        el.style.setProperty('--r', (rot + Math.max(-12, Math.min(12, dx / 14))) + 'deg');
+      });
+      const end = (e) => {
+        if (!el.hasPointerCapture(e.pointerId)) return;
+        el.releasePointerCapture(e.pointerId);
+        el.classList.remove('is-drag');
+        el.style.setProperty('--r', rot + 'deg');
+        if (!moved) el.dispatchEvent(new CustomEvent('tap'));
+      };
+      el.addEventListener('pointerup', end);
+      el.addEventListener('pointercancel', end);
+    });
   }
 
-  // --- C. Developer Console Greeting ---
-  try {
-    console.log(
-      `%c
- /\\_/\\  
-( o.o )  Mohamed Fares Slimani (Tsuki)
- > ^ <   Senior Mobile Engineer & AI PhD Researcher
-`,
-      'color: #38bdf8; font-weight: bold; font-family: monospace; font-size: 14px;'
-    );
-    console.log(
-      '%c🚀 Welcome, fellow developer! Explore the portfolio repository at https://github.com/MFaresSlimani',
-      'color: #a78bfa; font-size: 12px; font-weight: 600;'
-    );
-  } catch (err) {
-    // Silent
+  /* ---------- Tsuki ---------- */
+  const tsuki = $('#tsuki');
+  if (tsuki) {
+    const bubble = $('.tsuki__bubble', tsuki);
+    const lines = ['Meow.', 'Purrr…', 'You found Tsuki.', 'He ships on Fridays. Brave.', 'Sehr gut!', 'Flutter > everything', 'I ate all the bugs.', 'Hire him, he feeds me.'];
+    let i = -1, timer;
+    const speak = () => {
+      i = (i + 1) % lines.length;
+      bubble.textContent = lines[i];
+      tsuki.classList.add('is-talking');
+      clearTimeout(timer);
+      timer = setTimeout(() => tsuki.classList.remove('is-talking'), 2200);
+    };
+    tsuki.addEventListener('tap', speak);
+    tsuki.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); speak(); } });
+    if (!matchMedia('(pointer: fine)').matches) tsuki.addEventListener('click', speak);
   }
-}
 
+  /* ---------- work filter ---------- */
+  const filters = $$('.filters button');
+  if (filters.length) {
+    filters.forEach((b) => b.addEventListener('click', () => {
+      filters.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const f = b.dataset.filter;
+      $$('.proj').forEach((p) => { p.hidden = f !== 'all' && !p.dataset.tags.split(' ').includes(f); });
+    }));
+  }
+
+  /* ---------- copy ---------- */
+  $$('.copy').forEach((b) => b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'copied'; }
+    catch (e) { b.textContent = 'press ctrl+c'; }
+    setTimeout(() => { b.textContent = 'copy'; }, 1800);
+  }));
+})();

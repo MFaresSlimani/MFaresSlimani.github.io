@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muslim Zakat · Fares Slimani</title>
+  <meta name="description" content="Arabic-first zakat and hawl tracker in Flutter: Hijri cycles, a rolling nisab window, custom-painted moon.">
+  <meta property="og:title" content="Muslim Zakat · Fares Slimani">
+  <meta property="og:description" content="Arabic-first zakat and hawl tracker in Flutter: Hijri cycles, a rolling nisab window, custom-painted moon.">
+  <meta name="theme-color" content="#F4F1EA">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Amiri:wght@400;700&family=Alfa+Slab+One&family=Bebas+Neue&family=Kaushan+Script&family=Manrope:wght@500;700;800&display=swap">
+  <link rel="stylesheet" href="../styles.css?v=4">
+  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body class="page-case">
+
+<header class="top">
+  <a class="top__name" href=".././">Fares Slimani</a>
+  <nav class="top__nav" id="nav" aria-label="Main">
+    <a href="../#about">About</a>
+    <a href="../#experience">Experience</a>
+    <a href="../#research">Research</a>
+    <a href="../#skills">Skills</a>
+    <a href="../work/" aria-current="page" class="is-active">Work</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+  <button class="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+  </button>
+  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+</header>
+
+<main>
+  <!-- ============ 01 ZAKAT ============ -->
+  <section class="case case--zakat" id="zakat" aria-labelledby="zakat-title">
+    <div class="wrap">
+      <header class="case__head">
+        <p class="case__n mono"><a href="./">← All work</a></p>
+        <h2 class="case__title" id="zakat-title">
+          <span class="z-ar" lang="ar" dir="rtl">زكاة المسلم</span>
+          <span class="z-en">Muslim Zakat</span>
+        </h2>
+        <p class="case__lede">
+          Zakat is only due on wealth that stays above the nisab for a full <em>lunar</em> year.
+          Most apps are a calculator with a 2.5% button. This one models the year itself.
+        </p>
+        <dl class="facts mono">
+          <div><dt>Role</dt><dd>Design, code, tests</dd></div>
+          <div><dt>Stack</dt><dd>Flutter 3.44 · GetX · hijri</dd></div>
+          <div><dt>Platform</dt><dd>Android, Arabic + English</dd></div>
+          <div><dt>Status</dt><dd>Working demo, bank sync simulated</dd></div>
+        </dl>
+        <p class="case__links">
+          <a class="btn" href="https://github.com/MFaresSlimani/muslim_zakat-app/releases/latest">Download APK</a>
+          <a class="link" href="https://github.com/MFaresSlimani/muslim_zakat-app">Screens and write-up →</a>
+        </p>
+      </header>
+
+      <div class="scrolly">
+        <div class="phone" aria-hidden="true"><div class="phone__screen"></div></div>
+        <div class="steps">
+          <article class="step">
+            <img class="step__shot" src="../assets/shots/zakat-onboarding-moon.webp" alt="Onboarding screen showing tonight's moon phase and the Hijri month" loading="lazy" width="540" height="1200">
+            <p class="step__n mono">Hijri first</p>
+            <h3>Every date is a Hijri date</h3>
+            <p>Cycle boundaries, due dates and labels are computed in the Umm al-Qura calendar, with a setting to shift by a day to match local moon sighting. Onboarding opens on tonight’s actual moon.</p>
+          </article>
+          <article class="step">
+            <img class="step__shot" src="../assets/shots/zakat-dashboard.webp" alt="Dashboard with the hawl dial and days left until the hawl completes" loading="lazy" width="540" height="1200">
+            <p class="step__n mono">The hawl engine</p>
+            <h3>A sliding one-year window of short cycles</h3>
+            <p>Income arrives all year, so the year is split into cycles of 2, 3, 4 or 6 Hijri months. Cycles lock when they end; when the oldest is a full lunar year old, the window is checked against the nisab.</p>
+          </article>
+          <article class="step">
+            <img class="step__shot" src="../assets/shots/zakat-settings.webp" alt="Settings: nisab standard, cycle length, metal prices and Hijri adjustment" loading="lazy" width="540" height="1200">
+            <p class="step__n mono">Nothing lost</p>
+            <h3>Below the nisab, money rolls forward</h3>
+            <p>If the window falls short, one tap pours the oldest cycle into the next one. Every rollover and payment writes an audit entry, and paid money is never charged twice. Changing the cycle length re-splits history without losing a balance.</p>
+          </article>
+          <article class="step">
+            <img class="step__shot" src="../assets/shots/zakat-dashboard-english.webp" alt="Dashboard in English, left to right" loading="lazy" width="540" height="1200">
+            <p class="step__n mono">Ledger design system</p>
+            <h3>Paper, ink, one green, brass for when it’s due</h3>
+            <p>About 540 strings per language, full right-to-left layout, Amiri and IBM Plex Sans Arabic, tabular figures for money. The dial, the 12-tick gauge and the moon are drawn with <code>CustomPainter</code>.</p>
+          </article>
+        </div>
+      </div>
+
+      <figure class="demo demo--zakat">
+        <figcaption>
+          <p class="mono">Try it · the same moon math, in your browser</p>
+          <h3>Tonight, and how the year is split</h3>
+        </figcaption>
+        <div class="zdemo">
+          <div class="zdemo__moon">
+            <canvas id="moon" width="220" height="220" aria-label="Current moon phase"></canvas>
+            <p class="zdemo__date" id="moon-hijri" lang="ar" dir="rtl"></p>
+            <p class="mono zdemo__phase" id="moon-phase"></p>
+          </div>
+          <div class="zdemo__ring">
+            <svg id="ring" viewBox="0 0 220 220" aria-label="One lunar year split into cycles"></svg>
+            <div class="seg" role="radiogroup" aria-label="Cycle length in Hijri months">
+              <button role="radio" data-len="2">2 mo</button>
+              <button role="radio" data-len="3" aria-checked="true">3 mo</button>
+              <button role="radio" data-len="4">4 mo</button>
+              <button role="radio" data-len="6">6 mo</button>
+            </div>
+            <p class="zdemo__note" id="ring-note"></p>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <nav class="next wrap" aria-label="More work">
+    <a href="./">← All work</a>
+    <a href="french-touch.html">Next: French Touch →</a>
+  </nav>
+</main>
+
+<footer class="foot wrap mono">
+  <span>© 2026 Mohamed Fares Slimani</span>
+  <span><a href="https://github.com/MFaresSlimani/MFaresSlimani.github.io">Plain HTML, CSS and JS</a> · no tracking</span>
+</footer>
+
+<script src="../script.js?v=4"></script>
+<script src="../demos.js?v=4"></script>
+</body>
+</html>
