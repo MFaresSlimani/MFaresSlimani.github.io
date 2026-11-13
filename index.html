@@ -2,267 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mohamed Fares Slimani · Mobile engineer &amp; AI researcher</title>
-  <meta name="description" content="Mohamed Fares Slimani (Tsuki): Mobile Engineer at ICOSNET, PhD researcher in AI at the University of Boumerdès, and university instructor.">
-  <meta name="author" content="Mohamed Fares Slimani">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fares Slimani, mobile engineer</title>
+  <meta name="description" content="Mohamed Fares Slimani (Tsuki): Flutter and Django engineer at ICOSNET, PhD researcher in AI at the University of Boumerdès, and university instructor.">
+  <meta name="theme-color" content="#2C5E63">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Mohamed Fares Slimani · Mobile engineer &amp; AI researcher">
+  <meta property="og:title" content="Fares Slimani, mobile engineer">
   <meta property="og:description" content="Flutter and Django in production, deep learning in research, C++ and Linux in the classroom.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/62572098?v=4">
-  <meta name="theme-color" content="#F4F1EA">
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Alfa+Slab+One&family=Manrope:wght@800&display=swap">
-  <link rel="stylesheet" href="styles.css?v=5">
-  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css?v=1">
 </head>
-<body class="page-home">
+<body>
+  <div class="wall" aria-hidden="true">
+    <canvas id="vessels"></canvas>
+    <div class="moon"></div>
+  </div>
 
-<a class="skip" href="#about">Skip to content</a>
+  <header class="status" aria-label="Status bar">
+    <time class="status__time" id="clock" datetime="">--:--</time>
+    <span class="status__os">Tsuki OS</span>
+    <span class="status__right" aria-hidden="true">
+      <span class="status__net">DZ</span>
+      <svg viewBox="0 0 20 14" class="status__signal"><rect x="0" y="9" width="3" height="5" rx="1"/><rect x="5" y="6" width="3" height="8" rx="1"/><rect x="10" y="3" width="3" height="11" rx="1"/><rect x="15" y="0" width="3" height="14" rx="1"/></svg>
+      <svg viewBox="0 0 28 14" class="status__battery"><rect x="0.75" y="0.75" width="23.5" height="12.5" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="3" width="15" height="8" rx="1.5"/><rect x="25.5" y="4.5" width="2" height="5" rx="1"/></svg>
+    </span>
+  </header>
 
-<header class="top">
-  <a class="top__name" href="#">Fares Slimani</a>
-  <nav class="top__nav" id="nav" aria-label="Main">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#research">Research</a>
-    <a href="#skills">Skills</a>
-    <a href="work/">Work</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button class="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
-  </button>
-  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
-</header>
+  <main class="home" id="home">
+    <h1 class="sr-only">Mohamed Fares Slimani, mobile engineer and AI researcher</h1>
 
-<main>
-
-  <!-- ============ HERO ============ -->
-  <section class="hero wrap" aria-labelledby="hero-name">
-    <div class="hero__text">
-      <p class="hero__hi mono">Hi, I’m Fares <span class="muted">(Tsuki)</span></p>
-      <h1 class="hero__name" id="hero-name">Mohamed Fares Slimani</h1>
-      <p class="hero__roles">
-        <span>Mobile Engineer at <b>ICOSNET</b></span>
-        <span>PhD researcher in AI at <b>UMBB</b></span>
-        <span>University instructor</span>
-      </p>
-      <p class="hero__lede">
-        I build production Flutter apps and the Django backends behind them: payments, video calls,
-        and identity checks with NFC passport reading and MRZ scanning. In parallel I do deep-learning
-        research on retinal images and 3D sign language, and I teach C++ and operating systems at university.
-      </p>
-      <p class="hero__cta">
-        <a class="btn" href="assets/cv/Mohamed_Fares_Slimani_CV.pdf">View CV</a>
-        <a class="btn btn--ghost" href="work/">See my work</a>
-        <a class="link" href="mailto:faresslimani0@gmail.com">faresslimani0@gmail.com</a>
-      </p>
-    </div>
-
-    <div class="hero__card">
-      <figure class="idcard" aria-label="Developer ID card with a machine-readable zone">
-        <div class="idcard__top">
-          <span class="mono">DZ · DEVELOPER ID</span>
-          <svg class="idcard__chip" viewBox="0 0 40 30" aria-hidden="true"><rect x=".5" y=".5" width="39" height="29" rx="5" fill="none" stroke="currentColor"/><path d="M14 .5v29M26 .5v29M.5 10h13M.5 20h13M26 10h13.5M26 20h13.5" stroke="currentColor" fill="none"/></svg>
+    <section class="widgets" aria-label="Widgets">
+      <article class="w w--profile">
+        <img class="w__photo" src="https://avatars.githubusercontent.com/u/62572098?v=4" alt="Portrait of Mohamed Fares Slimani" width="96" height="96">
+        <div>
+          <p class="w__hello">Hi, I’m Fares</p>
+          <p class="w__name">Mohamed Fares Slimani</p>
+          <p class="w__role">I build Flutter apps and the Django backends behind them at ICOSNET, research deep learning for retinal images, and teach C++ and operating systems at university.</p>
+          <div class="w__actions">
+            <a class="pill pill--primary" href="assets/cv/Mohamed_Fares_Slimani_CV.pdf">Open my CV</a>
+            <button class="pill" type="button" data-open="contact">Get in touch</button>
+          </div>
         </div>
-        <div class="idcard__body">
-          <img src="https://avatars.githubusercontent.com/u/62572098?v=4" alt="Portrait of Mohamed Fares Slimani" width="104" height="128">
-          <dl>
-            <div><dt>Name</dt><dd>Slimani, Mohamed Fares</dd></div>
-            <div><dt>Role</dt><dd>Mobile engineer · AI researcher</dd></div>
-            <div><dt>Based in</dt><dd>Algiers, Algeria</dd></div>
-            <div><dt>Speaks</dt><dd>AR · EN · DE · FR</dd></div>
-          </dl>
-        </div>
-        <div class="mrz" id="mrz" aria-label="Machine-readable zone">
-          <span class="mrz__line"></span>
-          <span class="mrz__line"></span>
-          <i class="mrz__beam" aria-hidden="true"></i>
-        </div>
-        <figcaption>
-          <button class="scan mono" id="scan" type="button">Scan the MRZ</button>
-          <span class="muted">Real ICAO 9303 check digits. I write these parsers at work.</span>
-        </figcaption>
-        <dl class="mrz-out mono" id="mrz-out" aria-live="polite"></dl>
-      </figure>
-    </div>
-
-    <!-- draggable stickers (desktop) -->
-    <div class="stickers" aria-hidden="true">
-      <button class="sticker sticker--logo sticker--flutter" data-rot="-8" tabindex="-1" style="left:-1%;top:6%" title="Flutter"><svg viewBox="8 4 48 56"><path d="M37 6 12 31l8 8L53 6z" fill="#54C5F8"/><path d="M37 30 23 44l14 14h16L39 44l14-14z" fill="#01579B"/><path d="M23 44l8-8 8 8-8 8z" fill="#29B6F6"/></svg></button>
-      <button class="sticker sticker--logo" data-rot="6" tabindex="-1" style="left:46%;top:3%" title="Dart"><svg viewBox="0 0 24 24"><path d="M4.105 4.105S9.158 1.58 11.684.316a3.079 3.079 0 0 1 1.481-.315c.766.047 1.677.788 1.677.788L24 9.948v9.789h-4.263V24H9.789l-9-9C.303 14.5 0 13.795 0 13.105c0-.319.18-.818.316-1.105l3.789-7.895zm.679.679v11.787c.002.543.021 1.024.498 1.508L10.204 23h8.533v-4.263L4.784 4.784zm12.055-.678c-.899-.896-1.809-1.78-2.74-2.643-.302-.267-.567-.468-1.07-.462-.37.014-.87.195-.87.195L6.341 4.105l10.498.001z" fill="#0175C2"/></svg></button>
-      <button class="sticker sticker--logo" data-rot="-6" tabindex="-1" style="right:1%;top:1%" title="Django"><svg viewBox="0 0 24 24"><path d="M11.146 0h3.924v18.166c-2.013.382-3.491.535-5.096.535-4.791 0-7.288-2.166-7.288-6.32 0-4.002 2.65-6.6 6.753-6.6.637 0 1.121.05 1.707.203zm0 9.143a3.894 3.894 0 00-1.325-.204c-1.988 0-3.134 1.223-3.134 3.365 0 2.09 1.096 3.236 3.109 3.236.433 0 .79-.025 1.35-.102V9.142zM21.314 6.06v9.098c0 3.134-.229 4.638-.917 5.937-.637 1.249-1.478 2.039-3.211 2.905l-3.644-1.733c1.733-.815 2.574-1.53 3.109-2.625.561-1.121.739-2.421.739-5.835V6.059h3.924zM17.39.021h3.924v4.026H17.39z" fill="#092E20"/></svg></button>
-      <button class="sticker sticker--logo" data-rot="8" tabindex="-1" style="left:44%;bottom:7%" title="GetX"><svg viewBox="0 0 24 24"><path d="M10.643.934c-.302.067-.928.29-1.386.503-2.167 1.05-3.485 3.52-3.15 5.899a5.76 5.76 0 0 0 1.575 3.25c1.128 1.174 2.469 1.732 4.134 1.744 1.642 0 2.994-.57 4.133-1.743C19.39 7 17.055 1.113 12.095.867c-.492-.022-1.14 0-1.452.067zM13.77 3.17c.905.335 1.966 1.374 2.178 2.145.213.793.1 1.82-.29 2.547-.86 1.575-2.816 2.726-3.989 2.346-.536-.179-1.25-.994-1.642-1.855C9.18 6.464 8.9 4.833 9.291 4.073c.592-1.15 2.715-1.575 4.48-.904ZM4.107 11.86c-2.838.916-4.513 3.598-4.022 6.48.48 2.86 3.173 4.994 6.033 4.77 2.033-.145 3.765-1.24 4.681-2.96.503-.96.681-1.676.681-2.815 0-2.045-.971-3.799-2.737-4.894-1.24-.782-3.25-1.028-4.636-.58Zm2.436 1.799c2.737.447 4.222 2.737 3.15 4.882-.436.86-1.352 1.732-2.29 2.179-.637.29-.838.335-1.43.29-1.028-.067-1.486-.48-2.045-1.877-.67-1.642-.95-3.608-.614-4.245.413-.771 1.117-1.162 2.413-1.33.067 0 .424.045.816.101zm9.842-1.743c-3.34 1.173-4.837 4.882-3.273 8.077.435.894 1.463 1.944 2.38 2.425 2.356 1.24 4.904.871 6.78-.995 3.05-3.016 1.9-8.077-2.178-9.507-1.039-.368-2.67-.368-3.709 0zm3.419 1.978c1.184.38 2.368 1.485 2.636 2.48.179.659.078 1.609-.223 2.234-.548 1.129-1.91 2.145-3.251 2.413-1.81.358-2.737-.882-3.15-4.19-.247-1.999.3-2.915 1.91-3.16.67-.101 1.25-.046 2.078.223z" fill="#8A2BE2"/></svg></button>
-      <button class="sticker sticker--logo" data-rot="-8" tabindex="-1" style="right:4%;bottom:10%" title="Supabase"><svg viewBox="0 0 24 24"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z" fill="#3FCF8E"/></svg></button>
-      <button class="sticker sticker--logo" data-rot="5" tabindex="-1" style="left:-2%;top:58%" title="Python"><svg viewBox="0 0 24 24"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z" fill="#3776AB"/></svg></button>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="sec wrap" id="about" aria-labelledby="about-title">
-    <header class="sec__head"><p class="sec__n mono">01</p><h2 id="about-title">About</h2></header>
-    <div class="hats">
-      <article class="hat">
-        <p class="hat__k mono">Industry</p>
-        <h3>Mobile &amp; backend engineer</h3>
-        <p>At ICOSNET, a telecom and internet provider, I build the mobile apps from architecture to store release, together with an amazing team: payments, video calls, and identity checks with NFC, MRZ and liveness. I also work on the Django services behind them.</p>
       </article>
-      <article class="hat">
-        <p class="hat__k mono">Research</p>
-        <h3>PhD in AI, computer vision</h3>
-        <p>Doctoral research at the University of Boumerdès on biomedical image segmentation: I reproduced FR-UNet at 0.815 F1 on CHASE_DB1. Earlier work on a 3D avatar for Algerian Sign Language is published, with an open dataset on Zenodo.</p>
-      </article>
-      <article class="hat">
-        <p class="hat__k mono">Teaching</p>
-        <h3>University instructor</h3>
-        <p>Adjunct instructor at UYFM and UMBB: C++ and Linux operating systems labs, human–machine interaction, and data mining. Before that, three years teaching programming, web and AI to students and beginners.</p>
-      </article>
-    </div>
-  </section>
 
-  <!-- ============ EXPERIENCE ============ -->
-  <section class="sec wrap" id="experience" aria-labelledby="exp-title">
-    <header class="sec__head"><p class="sec__n mono">02</p><h2 id="exp-title">Experience</h2></header>
-    <ol class="timeline">
-      <li class="job">
-        <div class="job__when mono">Aug 2025 – now<br><span class="muted">Algiers</span></div>
-        <div class="job__body">
-          <h3>Mobile Engineer <span class="at">· ICOSNET SPA</span></h3>
-          <ul>
-            <li>Build and ship the company’s mobile apps, from architecture to release on the App Store and Google Play: video calls, payments, identity verification and customer accounts.</li>
-            <li>Secure onboarding flows: NFC identity reading, MRZ scanning, liveness detection and KYC.</li>
-            <li>Work on the backend services behind the apps and connect them to the company’s internal business systems.</li>
-            <li>Collaborate with an amazing team: code reviews, shared architecture decisions, and shipping features together with backend and infrastructure colleagues.</li>
-          </ul>
-          <p class="tags mono">Flutter · Django · NFC/MRZ · KYC</p>
-          <p class="job__note">These apps belong to ICOSNET, so they aren’t shown here.</p>
-        </div>
-      </li>
-      <li class="job">
-        <div class="job__when mono">2024 – now</div>
-        <div class="job__body">
-          <h3>Adjunct Instructor <span class="at">· UYFM &amp; UMBB</span></h3>
-          <ul>
-            <li>Practical C++ and Linux operating systems sessions for undergraduates.</li>
-            <li>Human–machine interaction and data mining at UMBB, with hands-on algorithm work.</li>
-          </ul>
-          <p class="tags mono">C++ · Linux · HMI · Data mining</p>
-        </div>
-      </li>
-      <li class="job">
-        <div class="job__when mono">2022 – now</div>
-        <div class="job__body">
-          <h3>Freelance Flutter Developer <span class="at">· Independent</span></h3>
-          <ul>
-            <li>15+ mobile apps for Algerian businesses and social causes, from restaurant ordering to B2B tools for opticians. <a href="work/">See the work →</a></li>
-          </ul>
-          <p class="tags mono">Flutter · GetX · Riverpod · Supabase · Clean Architecture</p>
-        </div>
-      </li>
-      <li class="job">
-        <div class="job__when mono">2022 – 2025</div>
-        <div class="job__body">
-          <h3>Programming Instructor <span class="at">· Benyan Tech, CTL School, Kafil Al Yateem</span></h3>
-          <ul>
-            <li>Taught AI, web and programming to students and beginners, in private schools and charity programs.</li>
-          </ul>
-        </div>
-      </li>
-    </ol>
-  </section>
+      <button class="w w--note" type="button" data-open="experience">
+        <span class="note__app"><span class="note__dot"></span>ICOSNET</span>
+        <span class="note__title">Shipping with an amazing team</span>
+        <span class="note__body">Mobile engineer since August 2025: video calls, payments, and identity checks with NFC passport reading and MRZ scanning.</span>
+      </button>
 
-  <!-- ============ WORK TEASER ============ -->
-  <section class="sec wrap" id="work" aria-labelledby="work-title">
-    <header class="sec__head">
-      <p class="sec__n mono">03</p><h2 id="work-title">Selected work</h2>
-      <a class="sec__more" href="work/">All projects →</a>
-    </header>
-    <div class="teasers">
-      <a class="teaser teaser--zakat" href="work/zakat.html">
-        <img src="assets/shots/zakat-dashboard.webp" alt="" loading="lazy" width="540" height="1200">
-        <span class="teaser__k mono">Fintech · Android</span>
-        <span class="teaser__name">Muslim Zakat</span>
-        <span class="teaser__what">Zakat tracked by the lunar year, with a Hijri rules engine</span>
+      <div class="w w--clock">
+        <p class="clock__city">Algiers</p>
+        <p class="clock__time" id="clock-big">--:--</p>
+        <p class="clock__note">Open to mobile engineering roles, research collaborations and consulting.</p>
+      </div>
+    </section>
+
+    <nav class="apps" aria-label="Apps">
+      <button class="app-icon" type="button" data-open="french-touch">
+        <span class="app-icon__tile tile--ft"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" fill="#fff"/><circle cx="24" cy="24" r="15" fill="none" stroke="#D9262C" stroke-width="3"/><path d="M17 21h14M17 27h14" stroke="#2445B8" stroke-width="3" stroke-linecap="round"/></svg></span>
+        <span class="app-icon__label">French Touch</span>
+      </button>
+      <button class="app-icon" type="button" data-open="optica">
+        <span class="app-icon__tile tile--optica"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="16" cy="26" r="8" fill="none" stroke="#14303A" stroke-width="3"/><circle cx="32" cy="26" r="8" fill="none" stroke="#14303A" stroke-width="3"/><path d="M21 24q3-3 6 0M8 24l-3-6M40 24l3-6" stroke="#14303A" stroke-width="3" stroke-linecap="round"/></svg></span>
+        <span class="app-icon__label">Optica</span>
+      </button>
+      <button class="app-icon" type="button" data-open="zakat">
+        <span class="app-icon__tile tile--zakat"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="25" r="13" fill="#F3DFA8"/><circle cx="29" cy="20" r="11" fill="#0F4D3A"/><circle cx="35" cy="31" r="2" fill="#F3DFA8"/></svg></span>
+        <span class="app-icon__label">Zakat</span>
+      </button>
+      <button class="app-icon" type="button" data-open="sign">
+        <span class="app-icon__tile tile--sign"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M19 36V18a2.5 2.5 0 0 1 5 0v10V13a2.5 2.5 0 0 1 5 0v15V16a2.5 2.5 0 0 1 5 0v14c0 6-4 9-9 9h-2c-3 0-5-1-7-4l-5-7a2.5 2.5 0 0 1 4-3l4 4" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="app-icon__label">Sign avatar</span>
+      </button>
+      <button class="app-icon" type="button" data-open="about">
+        <span class="app-icon__tile tile--sys"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="7"/><path d="M11 38c1-7 6-11 13-11s12 4 13 11z"/></svg></span>
+        <span class="app-icon__label">About me</span>
+      </button>
+      <button class="app-icon" type="button" data-open="experience">
+        <span class="app-icon__tile tile--sys"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="16" width="30" height="22" rx="4"/><path d="M18 16v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3" fill="none" stroke="currentColor" stroke-width="3"/></svg></span>
+        <span class="app-icon__label">Experience</span>
+      </button>
+      <button class="app-icon" type="button" data-open="research">
+        <span class="app-icon__tile tile--sys"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 24s7-12 20-12 20 12 20 12-7 12-20 12S4 24 4 24z" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="24" cy="24" r="6"/></svg></span>
+        <span class="app-icon__label">Research</span>
+      </button>
+      <button class="app-icon" type="button" data-open="skills">
+        <span class="app-icon__tile tile--sys"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M30 8a9 9 0 0 0-8 12L9 33a3.5 3.5 0 0 0 5 5l13-13a9 9 0 0 0 12-8l-5 5-5-1-1-5z"/></svg></span>
+        <span class="app-icon__label">Toolbox</span>
+      </button>
+      <button class="app-icon" type="button" data-open="mrz">
+        <span class="app-icon__tile tile--mrz"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 16V10a2 2 0 0 1 2-2h6M32 8h6a2 2 0 0 1 2 2v6M40 32v6a2 2 0 0 1-2 2h-6M16 40h-6a2 2 0 0 1-2-2v-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 22h20M14 28h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>
+        <span class="app-icon__label">MRZ scanner</span>
+      </button>
+      <button class="app-icon" type="button" data-open="life">
+        <span class="app-icon__tile tile--sys"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39S8 30 8 19a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 11-16 20-16 20z"/></svg></span>
+        <span class="app-icon__label">Community</span>
+      </button>
+      <a class="app-icon" href="work/">
+        <span class="app-icon__tile tile--sys"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="3"/><rect x="27" y="8" width="13" height="13" rx="3"/><rect x="8" y="27" width="13" height="13" rx="3"/><rect x="27" y="27" width="13" height="13" rx="3"/></svg></span>
+        <span class="app-icon__label">All projects</span>
       </a>
-      <a class="teaser teaser--ft" href="work/french-touch.html">
-        <img src="assets/shots/ft-menu.webp" alt="" loading="lazy" width="540" height="1200">
-        <span class="teaser__k mono">Restaurant · Android + web</span>
-        <span class="teaser__name">French Touch</span>
-        <span class="teaser__what">Waiters, a live cashier queue and owner stats, on Supabase Realtime</span>
+      <a class="app-icon" href="assets/cv/Mohamed_Fares_Slimani_CV.pdf">
+        <span class="app-icon__tile tile--cv"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 6h15l9 9v25a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M28 6v9h9" fill="none" stroke="#fff" stroke-width="2.5"/><path d="M17 26h14M17 32h10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+        <span class="app-icon__label">CV.pdf</span>
       </a>
-      <a class="teaser teaser--optica" href="work/optica.html">
-        <img src="assets/shots/optica-order.webp" alt="" loading="lazy" width="390" height="844">
-        <span class="teaser__k mono">B2B · Android</span>
-        <span class="teaser__name">Optica</span>
-        <span class="teaser__what">Optical stores ordering lenses from each other, with thermal tickets</span>
-      </a>
-    </div>
-  </section>
+    </nav>
+  </main>
 
-  <!-- ============ RESEARCH ============ -->
-  <section class="sec wrap" id="research" aria-labelledby="research-title">
-    <header class="sec__head"><p class="sec__n mono">04</p><h2 id="research-title">Research &amp; publications</h2></header>
-    <ul class="pubs">
-      <li class="pub">
-        <p class="pub__meta mono">PhD dissertation · Feb 2025 – now · University of Boumerdès</p>
-        <h3>Deep learning for retinal vessel segmentation</h3>
-        <p>Feature-refinement and attention architectures (FR-UNet, Attention U-Net) for micro-vessel segmentation in fundus photos, aimed at earlier detection of diabetic retinopathy. Reproduced and benchmarked at <b>0.815 F1 on CHASE_DB1</b>.</p>
-        <p class="tags mono">PyTorch · TorchVision · OpenCV</p>
-      </li>
-      <li class="pub">
-        <p class="pub__meta mono">Conference paper · Dec 2024 · Nafath, Qatar</p>
-        <h3>3D Avatar for Algerian Sign Language</h3>
-        <p>A 3D avatar that turns Arabic phrases into Algerian Sign Language gestures, built to support deaf and hard-of-hearing communities.</p>
-        <p class="pub__links"><a href="https://doi.org/10.54455/mcn2804">DOI 10.54455/mcn2804</a> <a href="https://3dasl-avatar.vercel.app/">Live demo →</a></p>
-      </li>
-      <li class="pub">
-        <p class="pub__meta mono">Open dataset · Mar 2025 · Zenodo</p>
-        <h3>3DZSignDB: a 3D Algerian Sign Language gesture dataset</h3>
-        <p>3D coordinate sequences and sign annotations for sign-language research and avatar benchmarking.</p>
-        <p class="pub__links"><a href="https://doi.org/10.5281/zenodo.15020376">DOI 10.5281/zenodo.15020376</a></p>
-      </li>
-      <li class="pub">
-        <p class="pub__meta mono">Certificate · Oct 2022</p>
-        <h3>NVIDIA Deep Learning Institute: Fundamentals of Deep Learning</h3>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============ SKILLS ============ -->
-  <section class="sec wrap" id="skills" aria-labelledby="skills-title">
-    <header class="sec__head"><p class="sec__n mono">05</p><h2 id="skills-title">Skills</h2></header>
-    <div class="skills">
-      <div><h3>Mobile</h3><p>Flutter, Dart, Clean Architecture, BLoC, GetX, Riverpod, CustomPainter, localization and RTL, NFC e-passport reading, ICAO 9303 MRZ, liveness, FCM/APNs, Jitsi SDK, thermal printing (ESC/POS)</p></div>
-      <div><h3>Backend</h3><p>Django, DRF, token and JWT auth, PostgreSQL, MySQL, Supabase (Postgres, RLS, Realtime, Storage), WebSockets, integrating ERP, billing and document-management systems</p></div>
-      <div><h3>AI &amp; vision</h3><p>PyTorch, TensorFlow, OpenCV, scikit-learn, U-Net family, transfer learning, CLAHE preprocessing, NLTK</p></div>
-      <div><h3>Languages &amp; tools</h3><p>Dart, Python, C++, Java, Git, GitHub Actions, GitLab CI, Linux, Play Console, App Store Connect, golden and widget tests</p></div>
-    </div>
-  </section>
-
-  <!-- ============ EDUCATION + LANGUAGES ============ -->
-  <section class="sec wrap" id="education" aria-labelledby="edu-title">
-    <header class="sec__head"><p class="sec__n mono">06</p><h2 id="edu-title">Education &amp; languages</h2></header>
-    <div class="two">
-      <ol class="edu">
-        <li><span class="mono">2025 – now</span><div><h3>PhD in Artificial Intelligence</h3><p>University of Boumerdès (UMBB)</p></div></li>
-        <li><span class="mono">2022 – 2024</span><div><h3>Master’s in Systems Engineering</h3><p>University of Medea · web technologies, distributed systems, network security</p></div></li>
-        <li><span class="mono">2019 – 2022</span><div><h3>Bachelor’s in Computer Science</h3><p>University of Medea</p></div></li>
-      </ol>
-      <ul class="langs">
-        <li><span lang="ar" class="langs__glyph">ع</span><div><h3>Arabic</h3><p>Native</p></div></li>
-        <li><span class="langs__glyph">En</span><div><h3>English</h3><p>Fluent, C1</p></div></li>
-        <li><span class="langs__glyph">De</span><div><h3>German</h3><p>B2, ECL certificate</p></div></li>
-        <li><span class="langs__glyph">Fr</span><div><h3>French</h3><p>Upper intermediate, B2</p></div></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ COMMUNITY ============ -->
-  <section class="sec wrap has-tsuki" id="community" aria-labelledby="comm-title">
-    <button class="sticker tsuki" id="tsuki" data-rot="0" aria-label="Tsuki the cat. Press to hear her." style="right:2%;top:24px">
+  <nav class="dock" aria-label="Contact">
+    <a class="dock__item" href="mailto:faresslimani0@gmail.com" aria-label="Email faresslimani0@gmail.com">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="11" width="36" height="26" rx="5" fill="#E8A33D"/><path d="M8 14l16 12 16-12" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="dock__item" href="https://wa.me/213558139901" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a class="dock__item" href="https://www.linkedin.com/in/faresslimani01" aria-label="LinkedIn profile">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="14" width="36" height="24" rx="5" fill="#1D6B66"/><path d="M18 14v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3" fill="none" stroke="#1D6B66" stroke-width="3"/><path d="M6 24h36" stroke="#fff" stroke-width="2.5"/></svg>
+    </a>
+    <a class="dock__item" href="https://github.com/MFaresSlimani" aria-label="GitHub profile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#181717" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3.678.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1 3.285-.678 3.285-.678.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+    <button class="dock__item dock__tsuki" type="button" id="tsuki" aria-label="Tsuki the cat. Press to hear her.">
       <span class="tsuki__bubble" role="status"></span>
       <svg viewBox="0 0 120 100" aria-hidden="true">
         <path d="M22 92c-4-30 6-52 38-52s42 22 38 52z" fill="#2B2A28"/>
@@ -271,44 +136,234 @@
         <ellipse cx="60" cy="58" rx="36" ry="28" fill="#2B2A28"/>
         <g class="tsuki__eyes"><ellipse cx="46" cy="56" rx="7" ry="8" fill="#E8D36A"/><ellipse cx="74" cy="56" rx="7" ry="8" fill="#E8D36A"/><ellipse cx="46" cy="57" rx="2.2" ry="6" fill="#111"/><ellipse cx="74" cy="57" rx="2.2" ry="6" fill="#111"/></g>
         <path d="M57 67h6l-3 3z" fill="#E7A4A4"/>
-        <path d="M60 70q-4 5-8 2M60 70q4 5 8 2" stroke="#8C8A86" fill="none" stroke-width="1.2"/>
-        <path d="M30 66l-14-3M30 70l-14 2M90 66l14-3M90 70l14 2" stroke="#8C8A86" stroke-width="1"/>
       </svg>
     </button>
-    <header class="sec__head"><p class="sec__n mono">07</p><h2 id="comm-title">Community &amp; life</h2></header>
-    <div class="two">
-      <ul class="plain">
-        <li><b>GDG Medea</b> · built <a href="https://github.com/MFaresSlimani/EZ-Check-in">EZ-Check-in</a> for DevFest and I/O Extended, and ran workshops</li>
-        <li><b>Techverse</b> · tech mentoring and software workshops</li>
-        <li><b>Kafil Al Yateem, Al Kalam, Nass El Khier</b> · coding lessons for young people</li>
+  </nav>
+
+  <!-- ================= APP WINDOWS ================= -->
+
+  <dialog class="app" id="app-about" aria-labelledby="t-about">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close About me"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-about">About me</h2></header>
+    <div class="app__body">
+      <p class="lead">I’m Fares, or Tsuki to friends. I work in three places at once, and each one makes me better at the other two.</p>
+      <div class="cards">
+        <section class="card">
+          <h3>Industry</h3>
+          <p>At ICOSNET, a telecom and internet provider in Algiers, I build mobile apps from architecture to store release, together with an amazing team: payments, video calls, and identity checks with NFC, MRZ and liveness. I also work on the Django services behind them.</p>
+        </section>
+        <section class="card">
+          <h3>Research</h3>
+          <p>I’m a PhD researcher in AI at the University of Boumerdès, working on retinal vessel segmentation. Earlier work on a 3D avatar for Algerian Sign Language is published, with an open dataset on Zenodo.</p>
+        </section>
+        <section class="card">
+          <h3>Teaching</h3>
+          <p>I teach C++ and Linux operating systems labs, human–machine interaction and data mining at UYFM and UMBB. Before that I spent three years teaching programming, web and AI to students and beginners.</p>
+        </section>
+      </div>
+      <h3 class="subhead">Education</h3>
+      <ul class="rows">
+        <li><span class="rows__main">PhD in Artificial Intelligence, University of Boumerdès</span><span class="rows__side">2025 to now</span></li>
+        <li><span class="rows__main">Master’s in Systems Engineering, University of Medea</span><span class="rows__side">2022 to 2024</span></li>
+        <li><span class="rows__main">Bachelor’s in Computer Science, University of Medea</span><span class="rows__side">2019 to 2022</span></li>
       </ul>
-      <p class="life">Outside code: calisthenics and the gym, games, music, and learning languages for fun. Tsuki the cat is somewhere on this page.</p>
+      <h3 class="subhead">Languages</h3>
+      <ul class="rows">
+        <li><span class="rows__main">Arabic</span><span class="rows__side">Native</span></li>
+        <li><span class="rows__main">English</span><span class="rows__side">Fluent, C1</span></li>
+        <li><span class="rows__main">German</span><span class="rows__side">B2, ECL certificate</span></li>
+        <li><span class="rows__main">French</span><span class="rows__side">Upper intermediate, B2</span></li>
+      </ul>
     </div>
-  </section>
+  </dialog>
 
-  <!-- ============ CONTACT ============ -->
-  <section class="sec contact wrap" id="contact" aria-labelledby="contact-title">
-    <header class="sec__head"><p class="sec__n mono">08</p><h2 id="contact-title">Contact</h2></header>
-    <p class="contact__lede">Open to mobile engineering roles, research collaborations and consulting.</p>
-    <p class="contact__mail">
-      <a href="mailto:faresslimani0@gmail.com">faresslimani0@gmail.com</a>
-      <button class="copy mono" type="button" data-copy="faresslimani0@gmail.com">copy</button>
-    </p>
-    <ul class="contact__links">
-      <li><a href="https://wa.me/213558139901">WhatsApp · +213 558 139 901</a></li>
-      <li><a href="https://www.linkedin.com/in/faresslimani01/">LinkedIn</a></li>
-      <li><a href="https://github.com/MFaresSlimani">GitHub</a></li>
-      <li><a href="assets/cv/Mohamed_Fares_Slimani_CV.pdf">CV (PDF)</a></li>
-    </ul>
-  </section>
+  <dialog class="app" id="app-experience" aria-labelledby="t-experience">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close Experience"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-experience">Experience</h2></header>
+    <div class="app__body">
+      <ol class="timeline">
+        <li>
+          <p class="timeline__when">August 2025 to now, Algiers</p>
+          <h3>Mobile Engineer at ICOSNET SPA</h3>
+          <ul>
+            <li>Build and ship the company’s mobile apps, from architecture to release on the App Store and Google Play: video calls, payments, identity verification and customer accounts.</li>
+            <li>Secure onboarding flows with NFC identity reading, MRZ scanning, liveness detection and KYC.</li>
+            <li>Work on the backend services behind the apps and connect them to the company’s internal business systems.</li>
+            <li>Collaborate with an amazing team: code reviews, shared architecture decisions, and shipping features together with backend and infrastructure colleagues.</li>
+          </ul>
+          <p class="muted">These apps belong to ICOSNET, so they aren’t shown here.</p>
+        </li>
+        <li>
+          <p class="timeline__when">2024 to now</p>
+          <h3>Adjunct Instructor at UYFM and UMBB</h3>
+          <ul>
+            <li>Practical C++ and Linux operating systems sessions for undergraduates.</li>
+            <li>Human–machine interaction and data mining at UMBB, with hands-on algorithm work.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="timeline__when">2022 to now</p>
+          <h3>Freelance Flutter Developer</h3>
+          <ul>
+            <li>15+ mobile apps for Algerian businesses and social causes, from restaurant ordering to B2B tools for opticians.</li>
+          </ul>
+        </li>
+        <li>
+          <p class="timeline__when">2022 to 2025</p>
+          <h3>Programming Instructor at Benyan Tech, CTL School and Kafil Al Yateem</h3>
+          <ul>
+            <li>Taught AI, web and programming to students and beginners, in private schools and charity programs.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </dialog>
 
-</main>
+  <dialog class="app" id="app-research" aria-labelledby="t-research">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close Research"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-research">Research</h2></header>
+    <div class="app__body">
+      <article class="pub">
+        <p class="pub__kind">PhD dissertation, University of Boumerdès, since February 2025</p>
+        <h3>Deep learning for retinal vessel segmentation</h3>
+        <p>Feature-refinement and attention architectures (FR-UNet, Attention U-Net) for segmenting micro-vessels in fundus photos, aimed at earlier detection of diabetic retinopathy. I reproduced and benchmarked FR-UNet at 0.815 F1 on the CHASE_DB1 dataset. The faint branches behind this home screen are a nod to it.</p>
+        <p class="muted">PyTorch, TorchVision, OpenCV</p>
+      </article>
+      <article class="pub">
+        <p class="pub__kind">Conference paper, Nafath, Qatar, December 2024</p>
+        <h3>3D Avatar for Algerian Sign Language</h3>
+        <p>A 3D avatar that turns Arabic phrases into Algerian Sign Language gestures, built to support deaf and hard-of-hearing communities.</p>
+        <p class="links"><a href="https://doi.org/10.54455/mcn2804">Read the paper (DOI 10.54455/mcn2804)</a> <a href="https://3dasl-avatar.vercel.app/">Try the live demo</a></p>
+      </article>
+      <article class="pub">
+        <p class="pub__kind">Open dataset, Zenodo, March 2025</p>
+        <h3>3DZSignDB, a 3D Algerian Sign Language gesture dataset</h3>
+        <p>3D coordinate sequences and sign annotations for sign-language research and avatar benchmarking.</p>
+        <p class="links"><a href="https://doi.org/10.5281/zenodo.15020376">Get the dataset (DOI 10.5281/zenodo.15020376)</a></p>
+      </article>
+      <article class="pub">
+        <p class="pub__kind">Certificate, October 2022</p>
+        <h3>NVIDIA Deep Learning Institute: Fundamentals of Deep Learning</h3>
+      </article>
+    </div>
+  </dialog>
 
-<footer class="foot wrap mono">
-  <span>© 2026 Mohamed Fares Slimani</span>
-  <span><a href="https://github.com/MFaresSlimani/MFaresSlimani.github.io">Plain HTML, CSS and JS</a> · no tracking</span>
-</footer>
+  <dialog class="app" id="app-skills" aria-labelledby="t-skills">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close Toolbox"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-skills">Toolbox</h2></header>
+    <div class="app__body">
+      <div class="cards">
+        <section class="card">
+          <h3>Mobile</h3>
+          <p>Flutter and Dart with clean architecture, GetX, Riverpod and BLoC. CustomPainter, localization and right-to-left layouts, NFC e-passport reading, ICAO 9303 MRZ, liveness checks, push notifications (FCM and APNs), the Jitsi SDK, and thermal printing over ESC/POS.</p>
+        </section>
+        <section class="card">
+          <h3>Backend</h3>
+          <p>Django and Django REST Framework, token and JWT auth, PostgreSQL and MySQL, Supabase (Postgres, row-level security, Realtime, Storage), WebSockets, and integrating ERP, billing and document-management systems.</p>
+        </section>
+        <section class="card">
+          <h3>AI and vision</h3>
+          <p>PyTorch, TensorFlow, OpenCV and scikit-learn. The U-Net family, transfer learning, CLAHE preprocessing, and NLTK.</p>
+        </section>
+        <section class="card">
+          <h3>Everyday tools</h3>
+          <p>Dart, Python, C++ and Java. Git, GitHub Actions, GitLab CI, Linux, Play Console, App Store Connect, and golden and widget tests.</p>
+        </section>
+      </div>
+    </div>
+  </dialog>
 
-<script src="script.js?v=4"></script>
+  <dialog class="app" id="app-mrz" aria-labelledby="t-mrz">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close MRZ scanner"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-mrz">MRZ scanner</h2></header>
+    <div class="app__body">
+      <p class="lead">At work I write parsers for the machine-readable zone at the bottom of passports. Here is mine, with real ICAO 9303 check digits. Edit a field and watch the digits recompute.</p>
+      <div class="mrz">
+        <p class="mrz__line" id="mrz-1"></p>
+        <p class="mrz__line" id="mrz-2"></p>
+      </div>
+      <form class="mrz-form" id="mrz-form">
+        <label>Document number<input name="doc" maxlength="9" value="TSUKI" autocomplete="off" spellcheck="false"></label>
+        <label>Optional data<input name="opt" maxlength="14" value="FLUTTER PHD AI" autocomplete="off" spellcheck="false"></label>
+      </form>
+      <ul class="rows" id="mrz-checks"></ul>
+    </div>
+  </dialog>
+
+  <dialog class="app" id="app-life" aria-labelledby="t-life">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close Community"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-life">Community</h2></header>
+    <div class="app__body">
+      <ul class="rows rows--stack">
+        <li><span class="rows__main">GDG Medea</span><span class="rows__side">Built <a href="https://github.com/MFaresSlimani/EZ-Check-in">EZ-Check-in</a> for DevFest and I/O Extended, and ran workshops.</span></li>
+        <li><span class="rows__main">Techverse</span><span class="rows__side">Tech mentoring and software workshops.</span></li>
+        <li><span class="rows__main">Kafil Al Yateem, Al Kalam, Nass El Khier</span><span class="rows__side">Coding lessons for young people.</span></li>
+      </ul>
+      <p class="lead lead--small">Outside code: calisthenics and the gym, games, music, and learning languages for fun. Tsuki the cat lives in the dock. Tap her.</p>
+    </div>
+  </dialog>
+
+  <dialog class="app" id="app-contact" aria-labelledby="t-contact">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close Get in touch"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-contact">Get in touch</h2></header>
+    <div class="app__body">
+      <p class="lead">Open to mobile engineering roles, research collaborations and consulting. Email is the fastest way to reach me.</p>
+      <ul class="rows rows--stack">
+        <li><span class="rows__main"><a href="mailto:faresslimani0@gmail.com">faresslimani0@gmail.com</a></span><span class="rows__side"><button class="pill" type="button" id="copy-email">Copy email</button></span></li>
+        <li><span class="rows__main"><a href="https://wa.me/213558139901">WhatsApp, +213 558 139 901</a></span></li>
+        <li><span class="rows__main"><a href="https://www.linkedin.com/in/faresslimani01">LinkedIn</a></span></li>
+        <li><span class="rows__main"><a href="https://github.com/MFaresSlimani">GitHub</a></span></li>
+        <li><span class="rows__main"><a href="assets/cv/Mohamed_Fares_Slimani_CV.pdf">CV as PDF</a></span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <dialog class="app app--ft" id="app-french-touch" aria-labelledby="t-ft">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close French Touch"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-ft">French Touch</h2></header>
+    <div class="app__body">
+      <p class="lead">A fast-food place in Bab Ezzouar, Algiers. Waiters used to type orders into their phone’s notes app. Now they take them at the table, the cashier watches a live queue, and the owner gets the day in numbers.</p>
+      <div class="shots">
+        <img src="assets/shots/ft-menu.webp" alt="Waiter's menu screen" loading="lazy">
+        <img src="assets/shots/ft-item-options.webp" alt="Item options with live pricing" loading="lazy">
+        <img src="assets/shots/ft-cashier.webp" alt="Cashier's live order queue" loading="lazy">
+        <img src="assets/shots/ft-owner-today.webp" alt="Owner's view of today" loading="lazy">
+      </div>
+      <p class="facts">Riverpod 3, go_router and Supabase Realtime. Android, plus web for the cashier’s PC. Built and tested with GitHub Actions.</p>
+      <p class="links"><a href="work/french-touch.html">Read the case study</a> <a href="https://github.com/MFaresSlimani/french-touch-orders-app/releases/latest">Download the APK</a></p>
+    </div>
+  </dialog>
+
+  <dialog class="app app--optica" id="app-optica" aria-labelledby="t-optica">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close Optica"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-optica">Optica</h2></header>
+    <div class="app__body">
+      <p class="lead">Optical stores constantly order lenses from each other. Optica turns that into a network: browse partner stores, build an order by prescription, and the supplier ticks off what it can deliver and prints a ticket.</p>
+      <div class="shots">
+        <img src="assets/shots/optica-stores.webp" alt="Partner store directory" loading="lazy">
+        <img src="assets/shots/optica-order.webp" alt="Order builder by prescription" loading="lazy">
+        <img src="assets/shots/optica-process_request.webp" alt="Supplier processing a request" loading="lazy">
+        <img src="assets/shots/optica-requests_arabic.webp" alt="Requests screen in Arabic" loading="lazy">
+      </div>
+      <p class="facts">GetX, Supabase, Hive and ESC/POS thermal printing. French, English, Arabic and Tamazight. 81 tests and 14 golden screens.</p>
+      <p class="links"><a href="work/optica.html">Read the case study</a> <a href="https://github.com/MFaresSlimani/optica_beta">See the source</a></p>
+    </div>
+  </dialog>
+
+  <dialog class="app app--zakat" id="app-zakat" aria-labelledby="t-zakat">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close Zakat"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-zakat">Muslim Zakat</h2></header>
+    <div class="app__body">
+      <p class="lead">Zakat is only due on wealth that stays above the nisab for a full lunar year. Most apps are a calculator with a 2.5% button. This one models the year itself, in the Hijri calendar.</p>
+      <div class="shots">
+        <img src="assets/shots/zakat-onboarding-moon.webp" alt="Onboarding on tonight's moon" loading="lazy">
+        <img src="assets/shots/zakat-dashboard.webp" alt="Dashboard in Arabic" loading="lazy">
+        <img src="assets/shots/zakat-dashboard-english.webp" alt="Dashboard in English" loading="lazy">
+        <img src="assets/shots/zakat-settings.webp" alt="Settings" loading="lazy">
+      </div>
+      <p class="facts">Flutter, GetX and a Hijri rules engine. Arabic and English. A working demo with simulated bank sync.</p>
+      <p class="links"><a href="work/zakat.html">Read the case study</a> <a href="https://github.com/MFaresSlimani/muslim_zakat-app/releases/latest">Download the APK</a></p>
+    </div>
+  </dialog>
+
+  <dialog class="app" id="app-sign" aria-labelledby="t-sign">
+    <header class="app__bar"><button class="app__back" type="button" data-close aria-label="Close Sign avatar"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 id="t-sign">Sign avatar</h2></header>
+    <div class="app__body">
+      <p class="lead">A 3D avatar that signs Arabic phrases in Algerian Sign Language, for deaf and hard-of-hearing people. Published at Nafath in Qatar, with the gesture dataset released openly on Zenodo.</p>
+      <p class="links"><a href="https://3dasl-avatar.vercel.app/">Try the live demo</a> <a href="https://doi.org/10.54455/mcn2804">Read the paper</a> <a href="https://doi.org/10.5281/zenodo.15020376">Get the dataset</a></p>
+    </div>
+  </dialog>
+
+  <script src="home.js?v=1"></script>
 </body>
 </html>
