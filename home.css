@@ -177,7 +177,6 @@ button { font: inherit; color: inherit; }
 .tile--zakat { background: #0F4D3A; }
 .tile--zakat svg { width: 72%; height: 72%; }
 .tile--sign { background: #7A4FD1; }
-.tile--mrz { background: var(--marigold); color: #3A2400; }
 .tile--cv { background: #FFFFFF; color: #C2412D; }
 
 /* ---------- dock ---------- */
@@ -335,24 +334,6 @@ dialog.app.is-closing { animation: app-close .2s ease-in forwards; }
 .app--zakat .app__back:hover { background: rgb(255 255 255 / .12); }
 .app--optica .app__bar { background: #F7F4EE; }
 
-/* MRZ */
-.mrz {
-  background: #FFFFFF; border-radius: 18px; padding: 16px 18px; margin-bottom: 18px;
-  font-family: "OCR B", "OCR-B", Consolas, "Courier New", monospace;
-  font-size: clamp(11px, 2.1vw, 17px); letter-spacing: .06em;
-  overflow-x: auto; max-width: none !important;
-}
-.mrz__line { margin: 0 !important; white-space: pre; }
-.mrz__line .ck { background: #FCE6BF; color: #6B3B00; border-radius: 3px; }
-.mrz-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
-.mrz-form label { display: grid; gap: 4px; font-weight: 600; color: var(--muted); font-size: 15px; }
-.mrz-form input {
-  font: inherit; font-size: 17px; color: var(--ink);
-  padding: 10px 12px; border-radius: 12px; border: 1px solid var(--surface-3); background: #fff;
-  text-transform: uppercase;
-}
-@media (max-width: 520px) { .mrz-form { grid-template-columns: 1fr; } }
-.ok { color: var(--primary); font-weight: 700; }
 
 /* projects app */
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; max-width: none !important; }

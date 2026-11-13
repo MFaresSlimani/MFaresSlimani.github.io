@@ -140,33 +140,6 @@
     setTimeout(() => (copy.textContent = 'Copy email'), 2000);
   });
 
-  /* ---------- MRZ with ICAO 9303 check digits ---------- */
-  const val = (c) => (c === '<' ? 0 : /\d/.test(c) ? +c : c.charCodeAt(0) - 55);
-  const check = (s) => [...s].reduce((sum, c, i) => sum + val(c) * [7, 3, 1][i % 3], 0) % 10;
-  const field = (s, n) => (s.toUpperCase().replace(/[^A-Z0-9]/g, '<') + '<'.repeat(n)).slice(0, n);
-  const esc = (s) => s.replace(/</g, '&lt;');
-  const line1 = ('P<DZASLIMANI<<MOHAMED<FARES' + '<'.repeat(44)).slice(0, 44);
-  const renderMrz = () => {
-    const f = $('#mrz-form');
-    if (!f) return;
-    const doc = field(f.doc.value, 9);
-    const opt = field(f.opt.value, 14);
-    const dob = '<<<<<<', exp = '<<<<<<';
-    const cDoc = check(doc), cDob = check(dob), cExp = check(exp), cOpt = check(opt);
-    const composite = check(doc + cDoc + dob + cDob + exp + cExp + opt + cOpt);
-    const ck = (d) => `<span class="ck">${d}</span>`;
-    $('#mrz-1').textContent = line1;
-    $('#mrz-2').innerHTML = `${esc(doc)}${ck(cDoc)}DZA${esc(dob)}${ck(cDob)}M${esc(exp)}${ck(cExp)}${esc(opt)}${ck(cOpt)}${ck(composite)}`;
-    $('#mrz-checks').innerHTML = [
-      ['Document number', doc, cDoc],
-      ['Optional data', opt, cOpt],
-      ['Composite of the whole line', 'all fields', composite],
-    ].map(([k, v, d]) => `<li><span class="rows__main">${k}: <code>${esc(v)}</code></span><span class="rows__side">check digit <span class="ok">${d}</span></span></li>`).join('');
-  };
-  $('#mrz-form')?.addEventListener('input', renderMrz);
-  $('#mrz-form')?.addEventListener('submit', (e) => e.preventDefault());
-  renderMrz();
-
   /* ---------- Tsuki ---------- */
   const tsuki = $('#tsuki');
   if (tsuki) {
