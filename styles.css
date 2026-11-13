@@ -136,10 +136,9 @@ b { font-weight: 600; }
 }
 .sticker.is-drag { cursor: grabbing; scale: 1.08; transition: scale .2s; }
 .sticker svg { display: block; filter: drop-shadow(0 0 0 #fff) drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff) drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) drop-shadow(0 6px 8px rgb(0 0 0 / .18)); }
-.sticker--flutter svg, .sticker--moon svg { width: 56px; height: 56px; }
-.sticker--chip { background: #FFF; color: #191816; padding: 7px 12px; border-radius: 8px; font-size: 12px; box-shadow: 0 0 0 3px #fff, 0 6px 14px rgb(0 0 0 / .16); border: 1px dashed #C9C2B4; }
-.sticker--python { background: #FFF6D6; color: #1E4F7A; }
-.sticker--django { background: #0C4B33; color: #FFF; border-color: #0C4B33; }
+
+.sticker--logo { background: #FFF; border-radius: 14px; padding: 9px; box-shadow: 0 0 0 3px #fff, 0 6px 14px rgb(0 0 0 / .16); }
+.sticker--logo svg { width: 30px; height: 30px; filter: none; }
 .has-tsuki { position: relative; }
 .tsuki { z-index: 4; width: 92px; }
 .tsuki svg { width: 92px; height: auto; filter: drop-shadow(0 6px 10px rgb(0 0 0 / .2)); }
@@ -152,18 +151,6 @@ b { font-weight: 600; }
 .tsuki.is-talking .tsuki__bubble { opacity: 1; translate: 0 0; }
 @media (max-width: 1100px) { .stickers { display: none; } }
 @media (max-width: 900px) { .tsuki { position: absolute; right: var(--gutter) !important; bottom: auto !important; top: 64px !important; width: 64px; } .tsuki svg { width: 64px; } }
-
-/* facts */
-.facts-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
-.facts-strip div { padding: 22px 20px 22px 0; display: flex; flex-direction: column; gap: 2px; }
-.facts-strip div + div { padding-left: 20px; border-left: 1px solid var(--line); }
-.facts-strip b { font: 400 clamp(30px, 3.4vw, 42px)/1 var(--serif); }
-.facts-strip span { color: var(--muted); font-size: 14px; }
-@media (max-width: 700px) {
-  .facts-strip { grid-template-columns: 1fr 1fr; }
-  .facts-strip div:nth-child(3) { border-left: 0; padding-left: 0; }
-  .facts-strip div:nth-child(n+3) { border-top: 1px solid var(--line); }
-}
 
 /* sections */
 .sec { padding-top: clamp(80px, 11vh, 130px); }
